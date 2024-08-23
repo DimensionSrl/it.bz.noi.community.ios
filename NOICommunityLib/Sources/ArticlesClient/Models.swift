@@ -75,12 +75,14 @@ public struct Article: Codable, Hashable {
     
     public let languageToAuthor: LocalizedMap<ContactInfos>
     
-    public let imageGallery: [ImageGallery]?
+    public let imageGallery: [ImageGallery]
     
-    public let tags: [Tag]?
-    
+    public let tags: [Tag]
+
+    public let highlight: Bool
+
     public var isImportant: Bool {
-        tags?.contains { $0.id == "important" } ?? false
+        tags.contains { $0.id == "important" }
     }
     
     private enum CodingKeys: String, CodingKey {
@@ -90,8 +92,34 @@ public struct Article: Codable, Hashable {
         case languageToAuthor = "contactInfos"
         case imageGallery
         case tags = "oDHTags"
+        case highlight
     }
-    
+
+    public init(from decoder: any Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try values.decode(String.self, forKey: .id)
+        self.date = try values.decodeIfPresent(Date.self, forKey: .date)
+        self.languageToDetails = try values.decode(
+            Article.LocalizedMap<Article.Details>.self,
+            forKey: .languageToDetails)
+        self.languageToAuthor = try values.decode(
+            Article.LocalizedMap<Article.ContactInfos>.self,
+            forKey: .languageToAuthor
+        )
+        self.imageGallery = try values.decodeIfPresent(
+            [Article.ImageGallery].self,
+            forKey: .imageGallery
+        ) ?? []
+        self.tags = try values.decodeIfPresent(
+            [Article.Tag].self,
+            forKey: .tags
+        ) ?? []
+        self.highlight = try values.decodeIfPresent(
+            Bool.self,
+            forKey: .highlight
+        ) ?? false
+    }
+
 }
 
 // MARK: Article.Details

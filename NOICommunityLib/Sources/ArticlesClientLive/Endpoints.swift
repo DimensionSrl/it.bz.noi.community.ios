@@ -68,12 +68,12 @@ extension Endpoint {
             
             URLQueryItem(
                 name: "rawsort",
-                value: "-ArticleDate"
+                value: "-Highlight,-ArticleDate"
             )
             
             URLQueryItem(
                 name: "fields",
-                value: "Id,ArticleDate,Detail,ContactInfos,ImageGallery,ODHTags"
+                value: "Id,ArticleDate,Detail,ContactInfos,ImageGallery,ODHTags,Highlight"
             )
         }
     }
