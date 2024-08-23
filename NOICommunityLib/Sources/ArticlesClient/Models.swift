@@ -99,13 +99,13 @@ public struct Article: Codable, Hashable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try values.decode(String.self, forKey: .id)
         self.date = try values.decodeIfPresent(Date.self, forKey: .date)
-        self.languageToDetails = try values.decode(
-            Article.LocalizedMap<Article.Details>.self,
-            forKey: .languageToDetails)
-        self.languageToAuthor = try values.decode(
-            Article.LocalizedMap<Article.ContactInfos>.self,
+        self.languageToDetails = try values.decodeIfPresent(
+            LocalizedMap<Article.Details>.self,
+            forKey: .languageToDetails) ?? [:]
+        self.languageToAuthor = try values.decodeIfPresent(
+            LocalizedMap<Article.ContactInfos>.self,
             forKey: .languageToAuthor
-        )
+        ) ?? [:]
         self.imageGallery = try values.decodeIfPresent(
             [Article.ImageGallery].self,
             forKey: .imageGallery
