@@ -71,7 +71,15 @@ let package = Package(
         .library(
             name: "PeopleClientLive",
             targets: ["PeopleClientLive"]
-        )
+        ),
+        .library(
+            name: "VimeoClient",
+            targets: ["VimeoClient"]
+        ),
+        .library(
+            name: "VimeoClientLive",
+            targets: ["VimeoClientLive"]
+        ),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -205,6 +213,17 @@ let package = Package(
                 "Core",
                 "PeopleClient",
             ]
-        )
+        ),
+        .target(
+            name: "VimeoClient",
+            dependencies: []
+        ),
+        .target(
+            name: "VimeoClientLive",
+            dependencies: [
+                "Core",
+                "VimeoClient",
+            ]
+        ),
     ]
 )

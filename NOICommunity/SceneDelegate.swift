@@ -20,6 +20,7 @@ import AuthClientLive
 import AuthStateStorageClient
 import ArticlesClientLive
 import PeopleClientLive
+import VimeoClientLive
 
 #if DEBUG
 private let accessGroupKey = "24PN5XJ85Y.it.dimension.noi-community"
@@ -78,7 +79,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 }
             }(),
             articleClient: .live(baseURL: NewsFeatureConstants.clientBaseURL),
-            peopleClient: .live(baseURL: MeetConstant.clientBaseURL)
+            peopleClient: .live(baseURL: MeetConstant.clientBaseURL),
+            vimeoVideoExtractor: VimeoVideoExtractorImplementation(transport: URLSession.shared)
         )
     }()
     

@@ -20,6 +20,7 @@ import EventShortTypesClient
 import Core
 import ArticlesClient
 import PeopleClient
+import VimeoClient
 
 // MARK: - DependencyContainer
 
@@ -32,7 +33,8 @@ final class DependencyContainer {
     let eventShortTypesClient: EventShortTypesClient
     let artileClient: ArticlesClient
     let peopleClient: PeopleClient
-    
+    let vimeoVideoExtractor: VimeoVideoExtractor
+
     private var _userInfoCache: Cache<CacheKey, UserInfo>?
     private var userInfoCache: Cache<CacheKey, UserInfo>! {
         get {
@@ -58,7 +60,8 @@ final class DependencyContainer {
         eventShortClient: EventShortClient,
         eventShortTypesClient: EventShortTypesClient,
         articleClient: ArticlesClient,
-        peopleClient: PeopleClient
+        peopleClient: PeopleClient,
+        vimeoVideoExtractor: VimeoVideoExtractor
     ) {
         self.appPreferencesClient = appPreferencesClient
         self.isAutorizedClient = isAutorizedClient
@@ -67,7 +70,8 @@ final class DependencyContainer {
         self.eventShortTypesClient = eventShortTypesClient
         self.artileClient = articleClient
         self.peopleClient = peopleClient
-        
+        self.vimeoVideoExtractor = vimeoVideoExtractor
+
         NotificationCenter
             .default
             .publisher(for: logoutNotification)
@@ -102,7 +106,11 @@ extension DependencyContainer: ClientFactory {
     func makePeopleClient() -> PeopleClient {
         peopleClient
     }
-    
+
+    func makeVimeoClient() -> any VimeoVideoExtractor {
+        vimeoVideoExtractor
+    }
+
 }
 
 // MARK: ViewModelFactory

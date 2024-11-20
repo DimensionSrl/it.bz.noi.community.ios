@@ -73,7 +73,7 @@ extension Endpoint {
             
             URLQueryItem(
                 name: "fields",
-                value: "Id,ArticleDate,Detail,ContactInfos,ImageGallery,ODHTags"
+                value: "Id,ArticleDate,Detail,ContactInfos,ImageGallery,ODHTags,VideoItems"
             )
         }
     }
@@ -87,7 +87,7 @@ extension Endpoint {
             
             URLQueryItem(
                 name: "fields",
-                value: "Id,ArticleDate,Detail,ContactInfos,ImageGallery,ODHTags"
+                value: "Id,ArticleDate,Detail,ContactInfos,ImageGallery,ODHTags,VideoItems"
             )
         }
     }

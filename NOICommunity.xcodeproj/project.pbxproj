@@ -91,6 +91,8 @@
 		3167681827035D9500A9DB87 /* EatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167681627035D9500A9DB87 /* EatCoordinator.swift */; };
 		3167681B27036A2F00A9DB87 /* PlaceCardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167681927036A2F00A9DB87 /* PlaceCardContentView.swift */; };
 		3167681C27036A2F00A9DB87 /* PlaceCardContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3167681A27036A2F00A9DB87 /* PlaceCardContentView.xib */; };
+		316B0F992CEDF8260092D744 /* VimeoClient in Frameworks */ = {isa = PBXBuildFile; productRef = 316B0F982CEDF8260092D744 /* VimeoClient */; };
+		316B0F9B2CEDF8260092D744 /* VimeoClientLive in Frameworks */ = {isa = PBXBuildFile; productRef = 316B0F9A2CEDF8260092D744 /* VimeoClientLive */; };
 		316ED05B270AFE140070D272 /* CurrentScrollOffsetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316ED05A270AFE140070D272 /* CurrentScrollOffsetProvider.swift */; };
 		316ED05D270B12CF0070D272 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 316ED05C270B12C60070D272 /* Colors.xcassets */; };
 		316F5615281C166B0075B09F /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316F5614281C166B0075B09F /* MyAccountViewController.swift */; };
@@ -467,6 +469,7 @@
 			files = (
 				317EC88B283BB83E00F30B95 /* PeopleClientLive in Frameworks */,
 				31EF82592810517600EBE5F0 /* AppAuth in Frameworks */,
+				316B0F992CEDF8260092D744 /* VimeoClient in Frameworks */,
 				31CE9BF62701BF33005EA61A /* Kingfisher in Frameworks */,
 				3182F4A227DB3841005ADDAF /* AppPreferencesClient in Frameworks */,
 				3182F4A627DB3841005ADDAF /* EventShortClient in Frameworks */,
@@ -481,6 +484,7 @@
 				317B6F9C28118BD6008D07C0 /* AuthClient in Frameworks */,
 				3182F4AC27DB3841005ADDAF /* EventShortTypesClientLive in Frameworks */,
 				311E0EC62825157800404DCE /* FirebaseMessaging in Frameworks */,
+				316B0F9B2CEDF8260092D744 /* VimeoClientLive in Frameworks */,
 				31B1926F2C6A2136009872E9 /* FirebaseCrashlytics in Frameworks */,
 				317B6F9E28118BD6008D07C0 /* AuthClientLive in Frameworks */,
 				317EC889283BB83E00F30B95 /* PeopleClient in Frameworks */,
@@ -1100,6 +1104,8 @@
 				3181B9202B1E12BD000D2A0F /* Core */,
 				31B1926E2C6A2136009872E9 /* FirebaseCrashlytics */,
 				3145054C2CE39190000F3E9F /* CoreUI */,
+				316B0F982CEDF8260092D744 /* VimeoClient */,
+				316B0F9A2CEDF8260092D744 /* VimeoClientLive */,
 			);
 			productName = NOICommunity;
 			productReference = 3145D22D26B3F73F00F16787 /* NOICommunity.app */;
@@ -2317,6 +2323,14 @@
 		3145054C2CE39190000F3E9F /* CoreUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CoreUI;
+		};
+		316B0F982CEDF8260092D744 /* VimeoClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = VimeoClient;
+		};
+		316B0F9A2CEDF8260092D744 /* VimeoClientLive */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = VimeoClientLive;
 		};
 		317B6F9B28118BD6008D07C0 /* AuthClient */ = {
 			isa = XCSwiftPackageProductDependency;

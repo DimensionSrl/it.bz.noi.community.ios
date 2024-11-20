@@ -66,7 +66,17 @@ class NewsDetailsViewController: UIViewController {
             textView.textContainer.lineFragmentPadding = 0
         }
     }
-    
+
+    @IBOutlet private var videoContainerView: UIView! {
+        didSet {
+            let tapGesture = UITapGestureRecognizer(
+                target: self,
+                action: #selector(thumbnailTapped)
+            )
+            videoContainerView.addGestureRecognizer(tapGesture)
+        }
+    }
+
     @IBOutlet private var galleryContainerView: UIView!
     
     @IBOutlet private var galleryTextStackView: UIStackView!
@@ -267,11 +277,17 @@ private extension NewsDetailsViewController {
         if details?.text == nil {
             textView.removeFromSuperview()
         }
-        
-        if news.imageGallery.isNilOrEmpty {
+
+//        if news.videoURL == nil {
+//            videoContainerView.removeFromSuperview()
+//        } else {
+//            
+//        }
+
+        if news.imageGallery.isEmpty {
             galleryContainerView.removeFromSuperview()
         } else {
-            galleryVC.imageURLs = news.imageGallery?.compactMap(\.url) ?? []
+            galleryVC.imageURLs = news.imageGallery.compactMap(\.url)
             if galleryVC.parent != self {
                 embedChild(galleryVC, in: galleryContainerView)
             }
@@ -291,7 +307,11 @@ private extension NewsDetailsViewController {
     func preferredContentSizeCategoryDidChange(previousPreferredContentSizeCategory: UIContentSizeCategory?) {
         textView.attributedText = textView.attributedText?.updatedFonts(usingTextStyle: .body)
     }
-    
+
+    @objc private func thumbnailTapped() {
+        
+    }
+
 }
 
 private extension Article.Details {

@@ -28,13 +28,29 @@ final class RootCoordinator: BaseRootCoordinator {
     private var appPreferences: AppPreferences!
     
     private var pendingDeepLinkIntent: DeepLinkIntent?
-    
+
+    private lazy var vimeoVideoExtractor = dependencyContainer.makeVimeoClient()
+
     override func start(animated: Bool) {
         appPreferences = appPreferencesClient.fetch()
         if appPreferences.skipIntro {
             startAppCoordinator()
         } else {
             showIntro()
+        }
+
+
+        Task(priority: .userInitiated) { [weak self] in
+            guard let self else { return }
+
+            //let videoURL = URL(string: "https://vimeo.com/436960717")!
+            let videoURL = URL(string: "https://vimeo.com/1022094281?share=copy")!
+            do {
+                let video = try await self.vimeoVideoExtractor.fetchVideoURL(from: videoURL)
+                print(video)
+            } catch {
+                print(error)
+            }
         }
     }
     
