@@ -11,6 +11,7 @@
 
 import UIKit
 import Combine
+import Core
 import PeopleClient
 
 // MARK: CompaniesFiltersViewController
@@ -22,7 +23,22 @@ final class CompaniesFiltersViewController: UIViewController {
             searchBar.placeholder = .localized("search_label")
         }
     }
-    
+
+    @IBOutlet private var filtersBarView: FiltersBarView! {
+        didSet {
+            filtersBarView.delegate = self
+            filtersBarView.items = companyViewModel
+                .filterItems
+                .map(\.title)
+            filtersBarView.contentInset = .init(
+                top: 0,
+                left: 8,
+                bottom: 0,
+                right: 8
+            )
+        }
+    }
+
     @IBOutlet private var searchBarContainerView: UIView!
     
     @IBOutlet private var actionsContainersView: FooterView!
@@ -42,7 +58,7 @@ final class CompaniesFiltersViewController: UIViewController {
                 .configureAsPrimaryActionButton()
         }
     }
-    
+
     private var subscriptions: Set<AnyCancellable> = []
     
     private lazy var companyViewModel = peopleViewModel.makeCompanyViewModel()
@@ -125,6 +141,9 @@ final class CompaniesFiltersViewController: UIViewController {
 
 private extension CompaniesFiltersViewController {
     
+    typealias DataSource = UICollectionViewDiffableDataSource<Initial, CompanyId>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Initial, CompanyId>
+
     func configureBindings() {
         searchBar.delegate = resultsVC
         
@@ -153,17 +172,29 @@ private extension CompaniesFiltersViewController {
             }
             .store(in: &subscriptions)
         
-        companyViewModel.$results
+        companyViewModel
+            .$results
             .map { $0?.1.isEmpty }
             .sink { [weak self] isEmpty in
                 guard let self = self
                 else { return }
-                
+
                 if isEmpty == true {
                     self.containerVC.content = self.emptyResultsVC
                 } else {
                     self.containerVC.content = self.resultsVC
                 }
+            }
+            .store(in: &subscriptions)
+
+        companyViewModel
+            .$activeFilter
+            .sink { [weak filtersBarView, weak companyViewModel] newActiveFilter in
+                guard let filtersBarView,
+                      let companyViewModel
+                else { return }
+
+                filtersBarView.indexOfSelectedItem = companyViewModel.filterItems.firstIndex(of: newActiveFilter)
             }
             .store(in: &subscriptions)
     }
@@ -179,8 +210,8 @@ private extension CompaniesFiltersViewController {
         
         let companyViewModel: CompanyViewModel
         
-        private var dataSource: UICollectionViewDiffableDataSource<Company.Tag, CompanyId>! = nil
-        
+        private var dataSource: DataSource!
+
         var didSelectHandler: ((CompanyId) -> Void)?
         
         private var subscriptions: Set<AnyCancellable> = []
@@ -291,25 +322,15 @@ private extension CompaniesFiltersViewController.CollectionViewController {
         }
         
         let headerRegistration = UICollectionView
-            .SupplementaryRegistration<UICollectionViewCell>(
+            .SupplementaryRegistration<UICollectionViewListCell>(
                 elementKind: UICollectionView.elementKindSectionHeader
             ) { cell, kind, indexPath in
-                var config = UIListContentConfiguration.noiGroupedHeader()
-                
-                let companyTag = self.dataSource
+                let initial = self.dataSource
                     .snapshot()
                     .sectionIdentifiers[indexPath.section]
-                switch companyTag {
-                case .researchInstitution:
-                    config.text = .localized("filter_by_research_institution")
-                case .startup:
-                    config.text = .localized("filter_by_startup")
-                case .company:
-                    config.text = .localized("filter_by_company")
-                default:
-                    break
-                }
-                
+
+                var config = UIListContentConfiguration.noiGroupedHeader()
+                config.text = initial.value
                 cell.contentConfiguration = config
             }
         
@@ -339,11 +360,11 @@ private extension CompaniesFiltersViewController.CollectionViewController {
     }
     
     func updateUI(
-        _ result: ([Company.Tag], [Company.Tag: [CompanyId]]),
+        _ result: ([Initial], [Initial: [CompanyId]]),
         animated: Bool
     ) {
         let (sections, sectionToItems) = result
-        var snapshot = NSDiffableDataSourceSnapshot<Company.Tag, CompanyId>()
+        var snapshot = CompaniesFiltersViewController.Snapshot()
         snapshot.appendSections(sections)
         for section in sections {
             snapshot.appendItems(sectionToItems[section]!, toSection: section)
@@ -403,6 +424,20 @@ private extension CompaniesFiltersViewController.CollectionViewController {
     
 }
 
+// MARK: FilterBarViewDelegate
+
+extension CompaniesFiltersViewController: FiltersBarViewDelegate {
+
+    func filtersBarView(
+        _ filtersBarView: FiltersBarView,
+        didSelectItemAt index: Int
+    ) {
+        let newSelectedFilter = companyViewModel.filterItems[index]
+        companyViewModel.filterBy(filter: newSelectedFilter)
+    }
+
+}
+
 // MARK: UISearchBarDelegate {
 
 extension CompaniesFiltersViewController.CollectionViewController: UISearchBarDelegate {
@@ -417,7 +452,7 @@ extension CompaniesFiltersViewController.CollectionViewController: UISearchBarDe
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        companyViewModel.filter(searchTerm: searchText)
+        companyViewModel.filterBy(searchTerm: searchText)
     }
     
 }
