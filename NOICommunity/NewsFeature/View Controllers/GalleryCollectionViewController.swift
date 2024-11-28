@@ -84,6 +84,7 @@ private extension GalleryCollectionViewController {
     }
     
     func configureCollectionView() {
+        collectionView.alwaysBounceVertical = false
         collectionView.backgroundColor = .clear
         collectionView.collectionViewLayout = Self.createLayout(
             imageSize: imageSize,
