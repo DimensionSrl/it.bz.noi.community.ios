@@ -18,6 +18,8 @@ import Core
 class NewsDetailsViewController: UIViewController {
 
 	let news: Article
+    
+    let viewModel: NewsDetailsViewModel
 
     var externalLinkActionHandler: ((Article) -> Void)?
     
@@ -98,8 +100,9 @@ class NewsDetailsViewController: UIViewController {
         placeholderImage: .image(withColor: .noiPlaceholderImageColor)
     )
 
-	init(for item: Article) {
+    init(for item: Article, viewModel: NewsDetailsViewModel) {
 		self.news = item
+        self.viewModel = viewModel
 		super.init(nibName: "\(NewsDetailsViewController.self)", bundle: nil)
 	}
     
@@ -220,7 +223,7 @@ class NewsDetailsViewController: UIViewController {
                     if let cachedThumbnailURL = NewsDetailsViewController.thumbnailCache.value(forKey: videoURL) {
                         videoList.append(MediaItem(imageURL: cachedThumbnailURL, videoURL: videoURL))
                     } else {
-                        if let thumbnailURL = await ThumbnailGenerator.generateThumbnail(from: videoURL) {
+                        if let thumbnailURL = await viewModel.vimeoOEmbedClient.generateThumbnail(from: videoURL) {
                             NewsDetailsViewController.thumbnailCache.insert(thumbnailURL, forKey: videoURL)
                             videoList.append(MediaItem(imageURL: thumbnailURL, videoURL: videoURL))
                         } else {

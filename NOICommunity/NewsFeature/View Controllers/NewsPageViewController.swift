@@ -98,7 +98,7 @@ private extension NewsPageViewController {
 	}
 
 	func makeResultContent(for news: Article) -> NewsDetailsViewController {
-		let result = NewsDetailsViewController(for: news)
+        let result = NewsDetailsViewController(for: news, viewModel: self.viewModel)
 		result.externalLinkActionHandler = { [weak self] in
 			self?.externalLinkActionHandler?($0)
 		}

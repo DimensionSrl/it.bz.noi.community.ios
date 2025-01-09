@@ -13,6 +13,7 @@ import Foundation
 import CoreUI
 import Combine
 import ArticlesClient
+import VimeoOEmbedClient
 
 // MARK: - NewsDetailsViewModel
 
@@ -20,15 +21,18 @@ final class NewsDetailsViewModel: BasePageViewModel {
 
     let articlesClient: ArticlesClient
 	let newsId: String
+    let vimeoOEmbedClient: VimeoOEmbedClient
 
     @Published private(set) var isLoading = false
     @Published private(set) var error: Error!
     @Published private(set) var result: Article!
     
     init(
+        vimeoOEmbedClient: VimeoOEmbedClient,
         articlesClient: ArticlesClient,
         news: Article
     ) {
+        self.vimeoOEmbedClient = vimeoOEmbedClient
         self.articlesClient = articlesClient
 		self.newsId = news.id
 		self.result = news
@@ -37,9 +41,11 @@ final class NewsDetailsViewModel: BasePageViewModel {
     }
 
 	init(
+        vimeoOEmbedClient: VimeoOEmbedClient,
 		articlesClient: ArticlesClient,
 		newsId: String
 	) {
+        self.vimeoOEmbedClient = vimeoOEmbedClient
 		self.articlesClient = articlesClient
 		self.newsId = newsId
 

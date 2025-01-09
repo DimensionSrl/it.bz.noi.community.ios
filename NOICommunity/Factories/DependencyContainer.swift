@@ -20,6 +20,7 @@ import EventShortTypesClient
 import Core
 import ArticlesClient
 import PeopleClient
+import VimeoOEmbedClient
 
 // MARK: - DependencyContainer
 
@@ -32,6 +33,7 @@ final class DependencyContainer {
     let eventShortTypesClient: EventShortTypesClient
     let artileClient: ArticlesClient
     let peopleClient: PeopleClient
+    let vimeoOEmbedClient: VimeoOEmbedClient
     
     private var _userInfoCache: Cache<CacheKey, UserInfo>?
     private var userInfoCache: Cache<CacheKey, UserInfo>! {
@@ -58,7 +60,8 @@ final class DependencyContainer {
         eventShortClient: EventShortClient,
         eventShortTypesClient: EventShortTypesClient,
         articleClient: ArticlesClient,
-        peopleClient: PeopleClient
+        peopleClient: PeopleClient,
+        vimeoOEmbedClient: VimeoOEmbedClient
     ) {
         self.appPreferencesClient = appPreferencesClient
         self.isAutorizedClient = isAutorizedClient
@@ -67,6 +70,7 @@ final class DependencyContainer {
         self.eventShortTypesClient = eventShortTypesClient
         self.artileClient = articleClient
         self.peopleClient = peopleClient
+        self.vimeoOEmbedClient = vimeoOEmbedClient
         
         NotificationCenter
             .default
@@ -185,13 +189,13 @@ extension DependencyContainer: ViewModelFactory {
 	func makeNewsDetailsViewModel(
 		newsId: String
 	) -> NewsDetailsViewModel {
-		.init(articlesClient: makeArticlesClient(), newsId: newsId)
+        .init(vimeoOEmbedClient: vimeoOEmbedClient, articlesClient: makeArticlesClient(), newsId: newsId)
 	}
 
 	func makeNewsDetailsViewModel(
 		news: Article
 	) -> NewsDetailsViewModel {
-		.init(articlesClient: makeArticlesClient(), news: news)
+		.init(vimeoOEmbedClient: vimeoOEmbedClient, articlesClient: makeArticlesClient(), news: news)
     }
     
     func makePeopleViewModel() -> PeopleViewModel {
