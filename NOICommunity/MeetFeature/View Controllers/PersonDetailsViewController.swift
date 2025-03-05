@@ -45,7 +45,12 @@ final class PersonDetailsViewController: UIViewController {
             .publisher(for: .primaryActionTriggered)
             .eraseToAnyPublisher()
     }
-    
+
+	var shareAction: (() -> Void)? {
+		get { contentVC.shareAction }
+		set { contentVC.shareAction = newValue }
+	}
+
     @IBOutlet private var footerView: UIView!
     
     @IBOutlet private var mailButton: UIButton! {
@@ -137,7 +142,9 @@ private extension PersonDetailsViewController {
         let person: Person
         
         let company: Company?
-        
+
+		var shareAction: (() -> Void)?
+
         private var dataSource: UICollectionViewDiffableDataSource<Section, Info>! = nil
         
         private var subscriptions: Set<AnyCancellable> = []
@@ -146,7 +153,7 @@ private extension PersonDetailsViewController {
         
         private var selectedInfosTimers: [Info: AnyCancellable] = [:]
         
-        init(person: Person, company: Company?) {
+		init(person: Person, company: Company?) {
             self.person = person
             self.company = company
             super.init(collectionViewLayout: UICollectionViewFlowLayout())
@@ -322,7 +329,9 @@ private extension PersonDetailsViewController.CollectionViewController {
                     from: components,
                     style: .abbreviated
                 )
-                
+
+				config.shareAction = self.shareAction
+
                 cell.contentConfiguration = config
             }
         

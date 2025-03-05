@@ -177,6 +177,7 @@
 		31B3623E26F1E27A00031024 /* UIColor+NOI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B3623D26F1E27A00031024 /* UIColor+NOI.swift */; };
 		31B37E1E2833AFF700C26E6B /* MessageViewController+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B37E1D2833AFF700C26E6B /* MessageViewController+Error.swift */; };
 		31B4477F26F86FE5000999BA /* SegmentedControlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B4477E26F86FE4000999BA /* SegmentedControlBuilder.swift */; };
+		31B5250B2D78633A0013BCAD /* UIButton+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B5250A2D78633A0013BCAD /* UIButton+Action.swift */; };
 		31B6742027C79E520044A285 /* EventShortTypes.json in Resources */ = {isa = PBXBuildFile; fileRef = 31B6741F27C79E520044A285 /* EventShortTypes.json */; };
 		31BFAB35283FB49A00EF274D /* MeetConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BFAB34283FB49800EF274D /* MeetConstant.swift */; };
 		31BFAB39283FB8EC00EF274D /* PersonDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BFAB38283FB8EC00EF274D /* PersonDetailsViewController.swift */; };
@@ -414,6 +415,7 @@
 		31B3623D26F1E27A00031024 /* UIColor+NOI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+NOI.swift"; sourceTree = "<group>"; };
 		31B37E1D2833AFF700C26E6B /* MessageViewController+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessageViewController+Error.swift"; sourceTree = "<group>"; };
 		31B4477E26F86FE4000999BA /* SegmentedControlBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlBuilder.swift; sourceTree = "<group>"; };
+		31B5250A2D78633A0013BCAD /* UIButton+Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Action.swift"; sourceTree = "<group>"; };
 		31B6741F27C79E520044A285 /* EventShortTypes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EventShortTypes.json; sourceTree = "<group>"; };
 		31BFAB34283FB49800EF274D /* MeetConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetConstant.swift; sourceTree = "<group>"; };
 		31BFAB38283FB8EC00EF274D /* PersonDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsViewController.swift; sourceTree = "<group>"; };
@@ -908,6 +910,7 @@
 		31AA31F226F0B71800744A00 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				31B5250A2D78633A0013BCAD /* UIButton+Action.swift */,
 				31BFAB3A283FC88A00EF274D /* CALayer+XibConfiguration.swift */,
 				319C0E9F26F4790300C6D38B /* CalendarAdditions.swift */,
 				31178FDF26FA318800BDCDAA /* Collection.swift */,
@@ -1305,6 +1308,7 @@
 				3136CC422706F8D200C27129 /* UIView+TransitionId.swift in Sources */,
 				3182A1BE282D5159005439B4 /* NewsDetailsViewController.swift in Sources */,
 				319C0EA026F4790300C6D38B /* CalendarAdditions.swift in Sources */,
+				31B5250B2D78633A0013BCAD /* UIButton+Action.swift in Sources */,
 				31C640A226FE0BA9004B71A2 /* CoordinatorType.swift in Sources */,
 				3126E7252B287F670013F456 /* LoadUserInfoViewModel.swift in Sources */,
 				31C3629F270EFC5C00C92532 /* UIButton+Background.swift in Sources */,
