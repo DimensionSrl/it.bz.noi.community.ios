@@ -61,9 +61,13 @@ public extension AuthClient {
         client: OpenIDConfiguration,
         context: AuthContext,
         tokenStorage: T?,
-        urlSession: URLSession = .shared
+        urlSession: URLSession = .shared,
+        onInvalidAuth: (() -> Void)? = nil
     ) -> Self where T.AuthState == OIDAuthState {
-        let stateChangeDelegate = StateChangeDelegate(tokenStorage: tokenStorage)
+        let stateChangeDelegate = StateChangeDelegate(
+            tokenStorage: tokenStorage,
+            onInvalidAuth: onInvalidAuth
+        )
         
         var authState: OIDAuthState? {
 			get {
@@ -101,10 +105,11 @@ public extension AuthClient {
                     }
                     .mapError(mapAppAuthError(_:))
                     .mapError {
-                        guard case AuthError.OAuthTokenInvalidGrant = $0
+                        guard isInvalidAuthError($0)
                         else { return $0 }
                         
                         authState = nil
+                        onInvalidAuth?()
                         
                         return $0
                     }
@@ -122,10 +127,11 @@ public extension AuthClient {
                     }
                     .mapError(mapAppAuthError(_:))
                     .mapError {
-                        guard case AuthError.OAuthTokenInvalidGrant = $0
+                        guard isInvalidAuthError($0)
                         else { return $0 }
                         
                         authState = nil
+                        onInvalidAuth?()
                         
                         return $0
                     }
@@ -140,6 +146,15 @@ public extension AuthClient {
                 authSession = newSession
                 return endSessionPublisher
                     .mapError(mapAppAuthError(_:))
+                    .mapError {
+                        guard isInvalidAuthError($0)
+                        else { return $0 }
+                        
+                        authState = nil
+                        onInvalidAuth?()
+                        
+                        return $0
+                    }
                     .map {
                         authState = nil
                         return $0
@@ -373,9 +388,14 @@ private extension AuthClient {
     final class StateChangeDelegate<T: AuthStateStorageClient>: NSObject, OIDAuthStateChangeDelegate, OIDAuthStateErrorDelegate where T.AuthState == OIDAuthState {
         
         private var tokenStorage: T?
+        private var onInvalidAuth: (() -> Void)?
         
-        init(tokenStorage: T?) {
+        init(
+            tokenStorage: T?,
+            onInvalidAuth: (() -> Void)? = nil
+        ) {
             self.tokenStorage = tokenStorage
+            self.onInvalidAuth = onInvalidAuth
         }
         
         func didChange(_ state: OIDAuthState) {
@@ -387,21 +407,60 @@ private extension AuthClient {
             didEncounterAuthorizationError error: Error
         ) {
             print("\(#function) \(error.localizedDescription)")
+            
+            let mappedError = mapAppAuthError(error)
+            guard isInvalidAuthError(mappedError) else {
+                return
+            }
+            
+            // Clear auth state
+            tokenStorage?.state = nil
+            
+            // Trigger logout handler
+            onInvalidAuth?()
         }
     }
     
     static func mapAppAuthError(_ error: Error) -> Error {
-        switch error {
-        case let userCanceledAuthorizationFlow as NSError
-            where userCanceledAuthorizationFlow.domain == OIDGeneralErrorDomain &&
-            userCanceledAuthorizationFlow.code == OIDErrorCode.userCanceledAuthorizationFlow.rawValue:
-            return AuthError.userCanceledAuthorizationFlow
-        case let OAuthTokenInvalidGrantError as NSError
-            where OAuthTokenInvalidGrantError.domain == OIDOAuthTokenErrorDomain &&
-            OAuthTokenInvalidGrantError.code == OIDErrorCodeOAuthToken.invalidGrant.rawValue:
-            return AuthError.OAuthTokenInvalidGrant
-        default:
+        guard let nsError = error as NSError? else {
             return error
+        }
+        
+        // Handle general AppAuth errors
+        if nsError.domain == OIDGeneralErrorDomain {
+            if nsError.code == OIDErrorCode.userCanceledAuthorizationFlow.rawValue {
+                return AuthError.userCanceledAuthorizationFlow
+            }
+        }
+        
+        // Handle OAuth token errors
+        if nsError.domain == OIDOAuthTokenErrorDomain {
+            switch nsError.code {
+            case OIDErrorCodeOAuthToken.invalidGrant.rawValue:
+                return AuthError.OAuthTokenInvalidGrant
+            case OIDErrorCodeOAuthToken.invalidScope.rawValue:
+                return AuthError.OAuthTokenInvalidScope
+            case OIDErrorCodeOAuthToken.invalidClient.rawValue:
+                return AuthError.OAuthTokenInvalidClient
+            case OIDErrorCodeOAuthToken.invalidRequest.rawValue:
+                return AuthError.OAuthTokenInvalidRequest
+            default:
+                break
+            }
+        }
+        
+        return error
+    }
+    
+    static func isInvalidAuthError(_ error: Error) -> Bool {
+        switch error {
+        case AuthError.OAuthTokenInvalidGrant,
+             AuthError.OAuthTokenInvalidScope,
+             AuthError.OAuthTokenInvalidClient,
+             AuthError.OAuthTokenInvalidRequest:
+            return true
+        default:
+            return false
         }
     }
     
