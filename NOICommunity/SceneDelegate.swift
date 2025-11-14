@@ -66,7 +66,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     endSessionURI: AuthConstant.endSessionURI
                 ),
                 context: self,
-                tokenStorage: tokenStorage
+                tokenStorage: tokenStorage,
+                onInvalidAuth: {
+                    NotificationCenter.default.post(
+                        name: logoutNotification,
+                        object: nil
+                    )
+                }
             ),
 			eventShortClient: EventShortClientImplementation(
 				baseURL: EventsFeatureConstants.clientBaseURL,
