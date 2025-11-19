@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 //
-//  OIDCAuthValidator.swift
+//  OIDCAuthStateValidator.swift
 //  NOICommunity
 //
 //  Created by Matteo Matassoni on 12/11/25.
@@ -13,11 +13,12 @@ import Foundation
 import AuthStateStorageClient
 import AppAuth
 
-public protocol OIDCAuthValidator {
-	func validate() -> Bool
+public protocol OIDCAuthStateValidator {
+	var isValid: Bool { get }
+	func invalidate()
 }
 
-public final class LiveOIDCAuthValidator<Storage: AuthStateStorageClient>: OIDCAuthValidator where Storage.AuthState == OIDAuthState {
+public final class LiveOIDCAuthStateValidator<Storage: AuthStateStorageClient>: OIDCAuthStateValidator where Storage.AuthState == OIDAuthState {
 
 	private let tokenStorage: Storage
 	private let clientID: String
@@ -32,24 +33,22 @@ public final class LiveOIDCAuthValidator<Storage: AuthStateStorageClient>: OIDCA
 
 	/// Validates the authentication state against the expected client ID.
 	///
-	/// If validation fails, the stored auth state will be automatically cleared
-	/// to prevent using invalid credentials.
-	///
-	/// - Returns: `true` if the auth state is valid and matches the expected client ID, `false` otherwise.
-	public func validate() -> Bool {
+	/// Returns `true` if the auth state is valid and matches the expected client ID, `false` otherwise.
+	public var isValid: Bool {
 		guard let authState = tokenStorage.state else {
 			return true
 		}
 
-		let isValid = validateAuthState(authState, expectedClientID: clientID)
-		if !isValid {
-			tokenStorage.state = nil
-		}
-		return isValid
+		return validateAuthState(authState, expectedClientID: clientID)
+	}
+
+	/// Invalidates and clears the stored authentication state.
+	public func invalidate() {
+		tokenStorage.state = nil
 	}
 }
 
-private extension LiveOIDCAuthValidator {
+private extension LiveOIDCAuthStateValidator {
 
 	/// Validates whether the current authentication state matches the expected client ID.
 	///
@@ -68,3 +67,4 @@ private extension LiveOIDCAuthValidator {
 		return currentClientID == expectedClientID
 	}
 }
+

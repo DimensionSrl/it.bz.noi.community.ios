@@ -20,19 +20,19 @@ import VimeoVideoThumbnailClient
 typealias IsAutorizedClient = () -> Bool
 
 protocol ClientFactory {
-    
-    func makeAppPreferencesClient() -> AppPreferencesClient
-    
-    func makeIsAutorizedClient() -> IsAutorizedClient
-
-	func makeOIDCAuthValidator() -> OIDCAuthValidator
-
-    func makeAuthClient() -> AuthClient
-    
-    func makeArticlesClient() -> ArticlesClient
-    
-    func makePeopleClient() -> PeopleClient
-
+	
+	func makeAppPreferencesClient() -> AppPreferencesClient
+	
+	func makeIsAutorizedClient() -> IsAutorizedClient
+	
+	func makeOIDCAuthValidator() -> OIDCAuthStateValidator
+	
+	func makeAuthClient() -> AuthClient
+	
+	func makeArticlesClient() -> ArticlesClient
+	
+	func makePeopleClient() -> PeopleClient
+	
 	func makeVimeoVideoThumbnailClient() -> VimeoVideoThumbnailClient
-
+	
 }

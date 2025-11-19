@@ -217,7 +217,6 @@
 		31CF8132270B49100077CB0D /* VersionContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CF8130270B472F0077CB0D /* VersionContentView.swift */; };
 		31CF8133270B49100077CB0D /* VersionContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31CF812E270B46470077CB0D /* VersionContentView.xib */; };
 		31D07BD8282E35AA00AA7D99 /* NewsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D07BD7282E35AA00AA7D99 /* NewsCoordinator.swift */; };
-		31D2E2012EC49B94009DBCA7 /* OIDCAuthValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D2E2002EC49B93009DBCA7 /* OIDCAuthValidator.swift */; };
 		31D2E2072EC4BD6E009DBCA7 /* ReauthenticatePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D2E2042EC4BD6E009DBCA7 /* ReauthenticatePopUpViewController.swift */; };
 		31D2E2092EC4BD6E009DBCA7 /* ReauthenticatePopUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D2E2022EC4BD6E009DBCA7 /* ReauthenticatePopUpCoordinator.swift */; };
 		31D2E20D2EC4BE62009DBCA7 /* ReauthenticatePopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31D2E20C2EC4BE62009DBCA7 /* ReauthenticatePopUpViewController.xib */; };
@@ -235,6 +234,7 @@
 		31EF82592810517600EBE5F0 /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 31EF82582810517600EBE5F0 /* AppAuth */; };
 		31EFE4AB28575B0F00B496DB /* UIViewController+EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFE4AA28575B0F00B496DB /* UIViewController+EmptyState.swift */; };
 		31F0DBD3280F0D3D00E782D5 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F0DBD2280F02DC00E782D5 /* AuthCoordinator.swift */; };
+		31F768532ECDCA4400FBC8C0 /* OIDCAuthStateValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F768522ECDCA4400FBC8C0 /* OIDCAuthStateValidator.swift */; };
 		31FAB7D52EB8C93A004051FB /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FAB7D42EB8C939004051FB /* String+HTML.swift */; };
 		31FAEA7D28197D9700CDBC1B /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FAEA7C28197D9700CDBC1B /* AppCoordinator.swift */; };
 		31FAEA7F28197EC200CDBC1B /* NavigationCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FAEA7E28197EC200CDBC1B /* NavigationCoordinatorType.swift */; };
@@ -476,7 +476,6 @@
 		31CF812E270B46470077CB0D /* VersionContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VersionContentView.xib; sourceTree = "<group>"; };
 		31CF8130270B472F0077CB0D /* VersionContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionContentView.swift; sourceTree = "<group>"; };
 		31D07BD7282E35AA00AA7D99 /* NewsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCoordinator.swift; sourceTree = "<group>"; };
-		31D2E2002EC49B93009DBCA7 /* OIDCAuthValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OIDCAuthValidator.swift; sourceTree = "<group>"; };
 		31D2E2022EC4BD6E009DBCA7 /* ReauthenticatePopUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReauthenticatePopUpCoordinator.swift; sourceTree = "<group>"; };
 		31D2E2042EC4BD6E009DBCA7 /* ReauthenticatePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReauthenticatePopUpViewController.swift; sourceTree = "<group>"; };
 		31D2E20C2EC4BE62009DBCA7 /* ReauthenticatePopUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReauthenticatePopUpViewController.xib; sourceTree = "<group>"; };
@@ -495,6 +494,7 @@
 		31EE1A9127143AA1006A8EEF /* MapWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapWebViewController.swift; sourceTree = "<group>"; };
 		31EFE4AA28575B0F00B496DB /* UIViewController+EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+EmptyState.swift"; sourceTree = "<group>"; };
 		31F0DBD2280F02DC00E782D5 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		31F768522ECDCA4400FBC8C0 /* OIDCAuthStateValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OIDCAuthStateValidator.swift; sourceTree = "<group>"; };
 		31FAB7D42EB8C939004051FB /* String+HTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HTML.swift"; sourceTree = "<group>"; };
 		31FAEA7C28197D9700CDBC1B /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		31FAEA7E28197EC200CDBC1B /* NavigationCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinatorType.swift; sourceTree = "<group>"; };
@@ -781,7 +781,7 @@
 		3153010228071CF500471153 /* AuthFeature */ = {
 			isa = PBXGroup;
 			children = (
-				31D2E2002EC49B93009DBCA7 /* OIDCAuthValidator.swift */,
+				31F768522ECDCA4400FBC8C0 /* OIDCAuthStateValidator.swift */,
 				3185AA13281FEAAE00767E31 /* AccessNotGrantedCoordinator */,
 				3153010328071CFF00471153 /* WelcomeFeature */,
 				3106A2E4282132840029839A /* AuthConstants.swift */,
@@ -1413,7 +1413,6 @@
 				31157D1526FC83FE00A43B33 /* UIViewController+ShowCalenderError.swift in Sources */,
 				31CF8132270B49100077CB0D /* VersionContentView.swift in Sources */,
 				31C28BF62719709B00312A62 /* NOICells.swift in Sources */,
-				31D2E2012EC49B94009DBCA7 /* OIDCAuthValidator.swift in Sources */,
 				3185AA10281FD77400767E31 /* AccessNotGrantedCoordinator.swift in Sources */,
 				313010C928450A5B00AF6520 /* UIApplication+URL.swift in Sources */,
 				3152756328479E2700D5C8A1 /* CompaniesFiltersViewController.swift in Sources */,
@@ -1461,6 +1460,7 @@
 				3102F45F282C06B700687CF7 /* NewsViewController.swift in Sources */,
 				319C0E8D26F33BD000C6D38B /* ContainerViewController.swift in Sources */,
 				31155BEB2B224FDE0027AEC1 /* BlockAccessViewController.swift in Sources */,
+				31F768532ECDCA4400FBC8C0 /* OIDCAuthStateValidator.swift in Sources */,
 				315275652847A00700D5C8A1 /* CompanyId.swift in Sources */,
 				3197B095281A712B0002FA08 /* RootCoordinatorType.swift in Sources */,
 				319C0E9A26F3483600C6D38B /* UIControl+Combine.swift in Sources */,

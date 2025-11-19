@@ -19,7 +19,7 @@ extension URL {
     static let onboarding = URL(string: .localized("url_onboarding"))!
     static let feedbacks = URL(string: .localized("url_provide_feedback"))!
     static let noisteriaMenu = URL(string: .localized("url_noisteria_menu"))!
-    static let noiBarMenu = URL(string: .localized("url_noi_bar_menu"))!
+    static let communityBarA1Menu = URL(string: .localized("url_community_bar_a1_menu"))!
     static let alumixMenu = URL(string: .localized("url_alumix_menu"))!
     static let bugReport = URL(string: .localized("url_bug_report"))!
 }
