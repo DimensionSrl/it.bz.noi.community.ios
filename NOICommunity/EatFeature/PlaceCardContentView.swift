@@ -91,12 +91,19 @@ private extension PlaceCardContentView {
         )
         
         // Update action button
-        actionButton.titleLabel?.setText(
-            (configuration.actionAttributedText, configuration.actionText),
-            textProperties: configuration.actionTextProprieties
-        )
-        actionHandler = configuration.actionHandler
-        
+		if let actionHandler = configuration.actionHandler {
+			self.actionHandler = actionHandler
+			
+			actionButton.titleLabel?.setText(
+				(configuration.actionAttributedText, configuration.actionText),
+				textProperties: configuration.actionTextProprieties
+			)
+			actionButton.isHidden = false
+		} else {
+			actionButton.titleLabel?.text = nil
+			actionButton.isHidden = true
+		}
+
         var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
         snapshot.appendSections([.main])
         snapshot.appendItems(configuration.imagesNames)
