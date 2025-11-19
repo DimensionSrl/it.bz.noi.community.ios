@@ -15,52 +15,80 @@ import UIKit
 
 final class EatViewModel {
     struct Entry: Hashable, CaseIterable {
+
         static var allCases: [Entry] = [
-            .noiCommunityBar,
+            .communityBarA1,
+			.communityBarD2,
             .noisteria,
             .alumix
         ]
 
         let name: String
         let openeningText: String
-        let menuURL: URL
         let imagesNames: [String]
+		let menuURL: URL?
+
+		var isMenuAvailable: Bool { menuURL != nil }
+
+		init(
+			name: String,
+			openeningText: String,
+			imagesNames: [String],
+			menuURL: URL? = nil
+		) {
+			self.name = name
+			self.openeningText = openeningText
+			self.imagesNames = imagesNames
+			self.menuURL = menuURL
+		}
 
         static let noisteria = Self(
             name: .localized("noisteria_name"),
             openeningText: .localized("noisteria_openings"),
-            menuURL: .noisteriaMenu,
             imagesNames: [
                 "noisteria_außen",
                 "noisteria_bar",
                 "noisteria_innen",
                 "noisteria_innen2",
                 "noisteria_salad"
-            ]
+            ],
+			menuURL: .noisteriaMenu
         )
-        static let noiCommunityBar = Self(
-            name: .localized("community_bar_name"),
-            openeningText: .localized("community_bar_openings"),
-            menuURL: .noiBarMenu,
+
+        static let communityBarA1 = Self(
+            name: .localized("community_bar_a1_name"),
+            openeningText: .localized("community_bar_a1_openings"),
             imagesNames:[
                 "rockin beets_launch_box",
                 "rockin beets_fridge",
                 "rockin beets_launch_box_bottle",
                 "rockin beets_launch_box_bottle_zoomed",
                 "rockin beets_meal prep"
-            ]
+            ],
+			menuURL: .communityBarA1Menu
         )
+
+		static let communityBarD2 = Self(
+			name: .localized("community_bar_d2_name"),
+			openeningText: .localized("community_bar_d2_openings"),
+			imagesNames:[
+				"rockin beets_meal prep",
+				"rockin beets_launch_box_bottle_zoomed",
+				"rockin beets_launch_box_bottle",
+				"rockin beets_fridge"
+			]
+		)
+
         static let alumix = Self(
             name: .localized("alumix_name"),
             openeningText: .localized("alumix_openings"),
-            menuURL: .alumixMenu,
             imagesNames: [
                 "alumix",
                 "alumix_frittura",
                 "alumix_pizza",
                 "alumix_sala-garden"
-            ]
-
+            ],
+			menuURL: .alumixMenu
         )
     }
 }
@@ -159,9 +187,13 @@ private extension EatMainViewController {
             contentConfiguration.text = entry.name
             contentConfiguration.secondaryText = entry.openeningText
             contentConfiguration.actionText = .localized("btn_menu")
-            contentConfiguration.actionHandler = { [weak self] in
-                self?.showMenuHandler?(entry)
-            }
+			if entry.isMenuAvailable {
+				contentConfiguration.actionHandler = { [weak self] in
+					self?.showMenuHandler?(entry)
+				}
+			} else {
+				contentConfiguration.actionHandler = nil
+			}
             contentConfiguration.imagesNames = entry.imagesNames
             cell.contentConfiguration = contentConfiguration
             cell.backgroundConfiguration = UIBackgroundConfiguration.clear()
