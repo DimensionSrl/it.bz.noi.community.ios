@@ -53,7 +53,7 @@ final class LoadUserInfoViewModel {
     
     func fetchVerifiedUserInfo() {
         let userInfoPublisher = authClient.userInfo()
-        let peoplePublisher = authClient.accessToken()
+        let peoplePublisher = authClient.accessToken(.default)
             .flatMap { [peopleClient] accessToken in
                 peopleClient.people(accessToken)
             }
@@ -70,7 +70,8 @@ final class LoadUserInfoViewModel {
 
                             return person.hasEmail(userEmail) || 
                             userEmail == "noi.community.app.test@opendatahub.com" ||
-                            userEmail.hasSuffix("@dimension.it")
+                            userEmail.hasSuffix("@dimension.it") ||
+							userEmail.hasSuffix("@afliant.com")
                         }
                     }
                     .setFailureType(to: Error.self)

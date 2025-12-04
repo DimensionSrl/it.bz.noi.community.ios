@@ -71,7 +71,7 @@ final class PeopleViewModel {
                 .setFailureType(to: Error.self)
                 .eraseToAnyPublisher()
         } else {
-            let authenticatedCompaniesPublisher = authClient.accessToken()
+            let authenticatedCompaniesPublisher = authClient.accessToken(.default)
                 .flatMap { [peopleClient] accessToken in
                     peopleClient.companies(accessToken)
                 }
@@ -86,7 +86,7 @@ final class PeopleViewModel {
                 .eraseToAnyPublisher()
         }
         
-        let peoplePublisher = authClient.accessToken()
+        let peoplePublisher = authClient.accessToken(.default)
             .flatMap { [peopleClient] accessToken in
                 peopleClient.people(accessToken)
             }

@@ -48,7 +48,7 @@ final class AuthCoordinator: BaseNavigationCoordinator {
 private extension AuthCoordinator {
     
     func goToLogin() {
-        authClient.accessToken()
+        authClient.accessToken(.default)
             .sink { [weak self] completion in
                 guard let self = self
                 else { return }
@@ -69,8 +69,24 @@ private extension AuthCoordinator {
     }
     
     func goToSignUp() {
-        let safariVC = SFSafariViewController(url: AuthConstant.signupURL)
-        navigationController.present(safariVC, animated: true)
+		authClient.accessToken(.registration)
+			.sink { [weak self] completion in
+				guard let self = self
+				else { return }
+
+				switch completion {
+				case .finished:
+					break
+				case .failure(let error):
+					self.handleAuthError(error)
+				}
+			} receiveValue: { [weak self] accessToken in
+				guard let self = self
+				else { return }
+
+				self.didFinishHandler(self)
+			}
+			.store(in: &subscriptions)
     }
 
     func goToAppPrivacyPage() {
