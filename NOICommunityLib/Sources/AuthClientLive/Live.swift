@@ -86,10 +86,11 @@ public extension AuthClient {
         var authSession: OIDExternalUserAgentSession?
         
         return Self(
-            accessToken: {
+            accessToken: { mode in
                 performActionWithFreshToken(authState: authState)
                     .catch { (error: Error) -> AnyPublisher<String, Error> in
                         startSSO(
+							mode: mode,
                             config: client,
                             from: context.presentationContext()
                         )
@@ -222,13 +223,21 @@ private extension AuthClient {
     }
     
     static func startSSO(
+		mode: AuthAccessTokenMode,
         configuration: OIDServiceConfiguration,
         clientID: String,
         redirectURI: URL,
         from presentationContext: UIViewController
     ) -> (OIDExternalUserAgentSession, AnyPublisher<OIDAuthState, Error>) {
         let subject = PassthroughSubject<OIDAuthState, Error>()
-        
+
+		let additionalParameters: [String: String]
+		switch mode {
+		case .default:
+			additionalParameters = ["prompt": "login"]
+		case .registration:
+			additionalParameters = ["prompt": "create"]
+		}
         let request = OIDAuthorizationRequest(
             configuration: configuration,
             clientId: clientID,
@@ -236,7 +245,7 @@ private extension AuthClient {
             scopes: [OIDScopeOpenID, OIDScopeProfile, "roles"],
             redirectURL: redirectURI,
             responseType: OIDResponseTypeCode,
-            additionalParameters: ["prompt": "login"]
+            additionalParameters: additionalParameters
         )
         
         let session = OIDAuthState.authState(
@@ -257,12 +266,14 @@ private extension AuthClient {
     }
     
     static func startSSO(
+		mode: AuthAccessTokenMode,
         config: OpenIDConfiguration,
         from presentationContext: UIViewController
     ) -> AnyPublisher<(OIDExternalUserAgentSession, OIDAuthState), Error> {
         discoverConfiguration(of: config.issuer)
             .flatMap { (discoveredConfig: OIDServiceConfiguration) -> AnyPublisher<(OIDExternalUserAgentSession, OIDAuthState), Error> in
                 let (newSession, ssoPublisher) = startSSO(
+					mode: mode,
                     configuration: discoveredConfig,
                     clientID: config.clientID,
                     redirectURI: config.redirectURI,

@@ -25,21 +25,6 @@ enum AuthConstant {
 		NOIOAuth2BaseURL
 	}()
 
-	static let signupURL: URL = {
-		var urlComponents = URLComponents(
-			url: NOIOAuth2BaseURL,
-			resolvingAgainstBaseURL: false
-		)!
-		urlComponents.path += "protocol/openid-connect/registrations"
-		urlComponents.queryItems = [
-			URLQueryItem(name: "client_id", value: clientID),
-			URLQueryItem(name: "redirect_uri", value: "https://noi.bz.it"),
-			URLQueryItem(name: "response_type", value: "code"),
-			URLQueryItem(name: "scope", value: "openid"),
-		]
-		return urlComponents.url!
-	}()
-
 	static let clientID = "community-app"
 
 	static let redirectURI = URL(string: "noi-community://oauth2redirect/login-callback")!

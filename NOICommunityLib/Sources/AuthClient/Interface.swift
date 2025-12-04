@@ -67,18 +67,26 @@ public enum AuthError: Error, Hashable {
     case OAuthTokenInvalidRequest
 }
 
+// MARK: - AuthFoo
+
+public enum AuthAccessTokenMode: Int {
+	case `default`
+	case registration
+}
+
+
 // MARK: - AuthClient
 
 public struct AuthClient {
     
-    public var accessToken: () -> AnyPublisher<String, Error>
-    
+	public var accessToken: (_ mode: AuthAccessTokenMode) -> AnyPublisher<String, Error>
+
     public var userInfo: () -> AnyPublisher<UserInfo, Error>
     
     public var endSession: () -> AnyPublisher<Void, Error>
     
     public init(
-        accessToken: @escaping () -> (AnyPublisher<String, Error>),
+        accessToken: @escaping (_ mode: AuthAccessTokenMode) -> (AnyPublisher<String, Error>),
         userInfo: @escaping() -> AnyPublisher<UserInfo, Error>,
         endSession: @escaping () -> (AnyPublisher<Void, Error>)
     ) {

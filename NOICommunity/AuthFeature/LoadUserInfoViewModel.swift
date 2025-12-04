@@ -53,7 +53,7 @@ final class LoadUserInfoViewModel {
     
     func fetchVerifiedUserInfo() {
         let userInfoPublisher = authClient.userInfo()
-        let peoplePublisher = authClient.accessToken()
+        let peoplePublisher = authClient.accessToken(.default)
             .flatMap { [peopleClient] accessToken in
                 peopleClient.people(accessToken)
             }
