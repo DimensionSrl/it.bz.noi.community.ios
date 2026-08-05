@@ -19,7 +19,6 @@
                 <outlet property="addToCalendarButton" destination="r7U-vZ-h8f" id="efZ-MQ-OSf"/>
                 <outlet property="contentStackView" destination="Ms9-9u-gmy" id="LSs-vh-Vil"/>
                 <outlet property="descriptionTextView" destination="yHa-xw-ydP" id="h3j-Ue-4ex"/>
-                <outlet property="locateEventButton" destination="kST-yx-x1w" id="27l-Dt-5PT"/>
                 <outlet property="scrollView" destination="QeO-FA-lUc" id="YVH-xN-i78"/>
                 <outlet property="signupButton" destination="Y3W-5G-W9S" id="3A7-Hm-k4H"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Rr7-cF-DkH"/>
@@ -114,19 +113,6 @@
                                         <action selector="signupActionWithSender:" destination="-1" eventType="primaryActionTriggered" id="ii1-ad-xd0"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kST-yx-x1w">
-                                    <rect key="frame" x="0.0" y="64" width="341" height="22"/>
-                                    <color key="tintColor" name="secondary_color"/>
-                                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
-                                    <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="-10" maxY="0.0"/>
-                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                    <state key="normal" title="Find on maps" image="ic_find">
-                                        <color key="titleColor" name="label_on_badge_background_color"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="findOnMapsActionWithSender:" destination="-1" eventType="primaryActionTriggered" id="HXo-4M-X9v"/>
-                                    </connections>
-                                </button>
                             </subviews>
                         </stackView>
                     </subviews>
@@ -155,7 +141,6 @@
     </objects>
     <resources>
         <image name="ic_calendar_add" width="16" height="17"/>
-        <image name="ic_find" width="16" height="18"/>
         <image name="ic_sign_up" width="18" height="18"/>
         <namedColor name="background_color">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

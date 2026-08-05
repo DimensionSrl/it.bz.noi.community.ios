@@ -49,9 +49,6 @@
 /* Contact details page: find button text */
 "btn_find" = "Trova";
 
-/* Event Details: Find on Maps button label */
-"btn_find_on_maps" = "Trova sulla mappa";
-
 /* Onboarding wizard: login button label */
 "btn_login" = "Accedi";
 
@@ -268,9 +265,6 @@ Tab Orientate: button label */
 
 /* Filters's title on action bar */
 "title_filters" = "Filtri";
-
-/* When map opened from FIND ON MAPS is generic (no specific rooms selected) */
-"title_generic_noi_techpark_map" = "NOI Techpark Maps";
 
 /* Tab Meet: title on action bar */
 "title_meet" = "Meet up!";

@@ -1,0 +1,87 @@
+{"TotalResults":3707,"TotalPages":1854,"CurrentPage":1,"PreviousPage":null,"NextPage":"https://tourism.api.opendatahub.com/v1/Event?pagesize=2&tagfilter=noi&fields=DateBegin,DateEnd,Detail,EventUrls,Id,ImageGallery,OrganizerInfos,VenueIds&removenullvalues=true&pagenumber=2","Seed":null,"Items":[{
+  "Id": "urn:event:noi:0cc8a97a-fce1-41e3-b03f-96a4bfbccf03",
+  "DateBegin": "2024-12-10T09:00:00",
+  "DateEnd": "2024-12-10T10:10:00",
+  "Detail": {
+    "de": {
+      "Title": "Digital Community Meeting: Neue Labs, spannende Projekte: Updates aus der Digital Community",
+      "BaseText": "Unser letztes Digital Community Meeting in diesem Jahr steht bevor – und wir haben gleich vier inspirierende Insights in aktuelle Projekte für dich dabei.\n\nKünstliche Intelligenz trifft Realität: Diego Calvanese stellt das AI Lab der Freien Universität Bozen vor. Die Forschung im AI Lab konzentriert sich auf die neuesten Entwicklungen in der Künstlichen Intelligenz und arbeitet eng mit der Industrie zusammen.\n\nGeodaten für mehr Sicherheit in den Bergen: Filipp Frei und Roberto Cavaliere geben Einblicke in das Projekt DigiWay: Durch die Vereinheitlichung und Validierung von Geodaten der Euregio sollen die öffentlich zugänglichen Informationen über die Sicherheit in den Bergen verbessert werden.\n\nSchutz vor Cyberbedrohungen: Barbara Russo erzählt vom neuen Cyber Security Lab der Freien Universität Bozen, das in einer geschützten, modularen und flexiblen Umgebung Cybersicherheits-Services für öffentliche und private Organisationen anbietet.\n\nUmweltmanagement der Zukunft: Roberto Monsorno von Eurac Research spricht über das Projekt EnvironTWIN – ein digitaler Zwilling für die Entwicklung von Umweltmanagement-Szenarien im alpinen Raum unter Berücksichtigung von Entwicklungsstand, Risiken und möglichen Lösungen.\n\nProgramm:\n9:00 Intro - Patrick Ohnewein, NOI \n9:10 AI Lab - Diego Calvanese, unibz\n9:25 Geodaten für Sicherheit am Berg - Filipp Frei & Roberto Cavaliere, NOI\n9:40 Cyber Security LAB - Barbara Russo, unibz\n9:55 Projekt EnvinronTWIN: digitale Zwillinge für ein vorausschauendes Umweltmanagement in alpinen Szenarien - Roberto Monsorno, Eurac Research\n10:10 Closing\n\nDie Teilnahme ist kostenlos, eine Anmeldung ist erforderlich. \nDu möchtest mehr erfahren? Schreib einfach an digital@noi.bz.it.\n",
+      "Language": "de"
+    },
+    "en": {
+      "Title": "Digital Community Meeting: New labs, exciting projects: updates from the Digital Community",
+      "BaseText": "Our last Digital Community Meeting of the year is around the corner – and we have four inspiring insights into current projects for you. \n\nArtificial Intelligence meets reality: Diego Calvanese introduces the AI Lab at the Free University of Bozen-Bolzano, which focuses on the latest developments in artificial intelligence and works closely with industry. \n\nGeodata for greater safety in the mountains: Filipp Frei and Roberto Cavaliere provide an insight into the DigiWay project, which aims to standardise and validate geodata in the Euregio in order to improve publicly available information on safety in the mountains. \n\nProtection against cyber threats: Barbara Russo talks about the new Cyber Security Lab at the Free University of Bozen-Bolzano, which offers cyber security services to public and private organisations in a protected, modular and adaptable environment. \n\nEnvironmental management of the future: Roberto Monsorno of Eurac Research talks about the EnvironTWIN project - a digital twin for developing environmental management scenarios in Alpine regions, considering their current state, risks and possible solutions.        \n\nProgramme:\n9:00 Intro - Patrick Ohnewein, NOI \n9:10 AI Lab - Diego Calvanese, unibz\n9:25 Geodata for safety on the mountain- Filipp Frei & Roberto Cavaliere, NOI\n9:40 Cyber Security LAB - Barbara Russo, unibz\n9:55 Project EnvinronTWIN: Digital Twins for Predictive Environmental Management in Alpine Scenarios   - Roberto Monsorno, Eurac Research\n10:10 Closing\n\nAttendance is free, registration is mandatory. \nWant to know more? Write to us: digital@noi.bz.it \n",
+      "Language": "en"
+    },
+    "it": {
+      "Title": "Digital Community Meeting: Nuovi laboratori, progetti avvincenti: gli ultimi update dalla Digital Community",
+      "BaseText": "L’ultimo Digital Community Meeting di quest’anno si avvicina. Per l’occasione abbiamo preparato quattro interessanti interventi per raccontarti in breve alcuni dei nuovi progetti in corso.\n\nL’intelligenza artificiale incontra la realtà: Diego Calvanese presenta l’AI Lab della Libera Università di Bolzano. La ricerca dell’AI Lab si concentra sugli ultimi sviluppi dell’intelligenza artificiale e lavora a stretto contatto con l’industria.\n\nGeodati per una maggiore sicurezza in montagna: Filipp Frei e Roberto Cavaliere ci raccontano da vicino il progetto DigiWay. L’obiettivo principale di DigiWay è quello di migliorare le informazioni sulla sicurezza in montagna a disposizione del pubblico attraverso la standardizzazione e la convalida dei geodati nell’Euregio.\n\nProtezione dalle minacce informatiche: Barbara Russo ci parla del nuovo Cyber Security Lab della Libera Università di Bolzano. Questo laboratorio offre servizi di sicurezza informatica per enti pubblici e organizzazioni private in un ambiente protetto, modulare e versatile.\n\nGestione ambientale del futuro: Roberto Monsorno di Eurac Research ci spiega l’obiettivo del progetto EnvironTWIN, un gemello digitale realizzato per sviluppare scenari di gestione ambientale nella regione alpina, tenendo conto dello stato evolutivo, dei rischi e delle possibili soluzioni.\n\nProgramma:\n9:00 Intro - Patrick Ohnewein, NOI \n9:10 AI Lab - Diego Calvanese, unibz\n9:25 Geodati per la sicurezza in montagna - Filipp Frei & Roberto Cavaliere, NOI \n9:40 Cyber Security LAB - Barbara Russo, unibz\n9:55 Progetto EnvinronTWIN: gemelli digitali per la gestione ambientale previsionale negli scenari alpini - Roberto Monsorno, Eurac Research\n10:10 Closing\n\nLa partecipazione è gratuita, la registrazione è obbligatoria. \nPer ulteriori informazioni puoi rivolgerti a digital@noi.bz.it \n",
+      "Language": "it"
+    }
+  },
+  "EventUrls": [
+    {
+      "Url": {
+        "en": "https://registration.noi.bz.it/event/registration?id=Digital_Community_Meeting3580533219"
+      },
+      "Type": "default",
+      "Active": true
+    }
+  ],
+  "ImageGallery": [
+    {
+      "ImageUrl": "https://tourism.images.opendatahub.com/api/Image/GetImage?imageurl=f607966d-561e-42d3-864d-6b8840844626.jpg"
+    }
+  ],
+  "OrganizerInfos": {
+    "en": {
+      "CompanyName": "NOI"
+    }
+  },
+  "VenueIds": [
+    "urn:venue:noi:6b3f0a14-3c5b-5d09-81f3-3ebe5b7885ea"
+  ]
+},{
+  "Id": "urn:event:noi:456a436a-403a-43d8-b3a2-974e78470c49",
+  "DateBegin": "2024-09-17T09:00:00",
+  "DateEnd": "2024-09-17T10:30:00",
+  "Detail": {
+    "de": {
+      "Title": "Digital Community Meeting ",
+      "BaseText": "Kooperations- und Finanzierungsmöglichkeiten für Gastro-, Cybersicherheits-, Energie- und Hardwareprojekte.\n\nSpannende und innovative Lösungen im Bereich der Technologie- und Hardware-Finanzierung: Freu dich auf einen aufschlussreichen Vormittag mit Branchenfachleuten, wegweisenden Projekten und wertvollem Wissen!\n\nLisa Althuber und Luca Pasquarelli stellen das Vorhaben Gastro A6 vor, Enrico Ascani spricht über die Datenvirtualisierungsplattform von PwC und Christian Pozza von Eurac Research über das kürzlich gestartete Projekt MODERATE. Im Anschluss gibt Gabriele Paglialonga hilfreiche Einblicke in die Finanzierungsmöglichkeiten für Hardware-Projekte. Wir schließen mit einer kurzen Zusammenfassung der wichtigsten Ergebnisse und der Gelegenheit zum Austausch und zur Vernetzung mit den führenden Vertretern der Tech-Community und den anderen Teilnehmenden.\n \nPROGRAMM\n09:00: Intro -Patrick Ohnewein, NOI\n09:10\t: Gastro A6 - Lisa Althuber und Luca Pasquarelli, NOI\n09:25: Data Virtualisation Platform by PwC - Enrico Ascani, PwC\n09:40: Project Moderate - Cristian Pozza, EURAC\n09:55\t: Industrio, Funding for Hardware Projects - Gabriele Paglialonga, Industrio\n10:10\t: Closing\n\nWEITERE INFORMATIONEN\nDie Teilnahme ist kostenlos, eine Anmeldung ist erforderlich. Das Treffen findet in englischer Sprache statt. Du möchtest mehr erfahren? Schreib einfach an digital@noi.bz.it\n\nFür deinen Kalender: Unser nächstes Treffen findet am 10. Dezember statt!",
+      "Language": "de"
+    },
+    "en": {
+      "Title": "Digital Community Meeting ",
+      "BaseText": "Collaboration and Funding Opportunities for Gastro, Cybersecurity, Energy and Hardware Projects.\n\nExciting and innovative solutions in the field of technology and hardware financing: Join us for an insightful morning with industry experts, groundbreaking projects and valuable knowledge!\n\nLisa Althuber and Luca Pasquarelli will present the Gastro A6 project, Enrico Ascani will talk about PwC's data virtualisation platform and Christian Pozza from Eurac Research will share details of the recently launched MODERATE project. Gabriele Paglialonga will then provide useful insights into the funding options for hardware projects. Finally, there will be a brief summary of the key findings and an opportunity to network with the leading experts of the tech-community and other attendees.\n\nPROGRAMME\n09:00: Intro -Patrick Ohnewein, NOI\n09:10\t: Gastro A6 - Lisa Althuber und Luca Pasquarelli, NOI\n09:25: Data Virtualisation Platform by PwC - Enrico Ascani, PwC\n09:40: Project Moderate - Cristian Pozza, EURAC\n09:55\t: Industrio, Funding for Hardware Projects - Gabriele Paglialonga, Industrio\n10:10\t: Closing\n\nFURTHER INFORMATION\nParticipation is free, registration is mandatory. The event will be held in English.\nWant to know more? Write to us digital@noi.bz.it\n\nFurther encounter to follow on 10 December – make a note in your calendar!\n",
+      "Language": "en"
+    },
+    "it": {
+      "Title": "Digital Community Meeting ",
+      "BaseText": "Opportunità di collaborazione e finanziamento per progetti di gastro, cybersecurity, energia e hardware.\n\nProgetti innovativi e soluzioni all’avanguardia nel campo della tecnologia e del finanziamento dell’hardware: unisciti a noi per una mattinata ricca di spunti con esperte ed esperti del settore!\n\nLisa Althuber e Luca Pasquarelli presenteranno il progetto Gastro A6, Enrico Ascani ci parlerà della Data Virtualisation Platform di PwC e Christian Pozza di Eurac Research del progetto MODERATE, lanciato di recente. Sarà Gabriele Paglialonga a fornire informazioni utili sulle opportunità di finanziamento per i progetti hardware. L'evento si concluderà con un breve riassunto dei punti chiave e occasioni di scambio e networking con chi partecipa all’evento e con i leader della tech-community.\n\nPROGRAMMA\n09:00\t: Intro - Patrick Ohnewein, NOI\n09:10: Gastro A6 - Lisa Althuber e Luca Pasquarelli, NOI\n09:25: Data Virtualisation Platform by PwC - Enrico Ascani, PwC\n09:40: Project Moderate - Cristian Pozza, EURAC\n09:55: Industrio, Funding for Hardware Projects - Gabriele Paglialonga, Industrio\n10:10: Closing\n \nULTERIORI INFORMAZIONI\nLa partecipazione è gratuita, la registrazione è obbligatoria. L'evento si svolgerà in inglese. Per ulteriori informazioni puoi rivolgerti a digital@noi.bz.it\n\nIl prossimo incontro seguirà il 10 dicembre – segnatelo nel tuo calendario!",
+      "Language": "it"
+    }
+  },
+  "EventUrls": [
+    {
+      "Url": {
+        "en": "https://registration.noi.bz.it/event/speakers?id=Digital_Community_Meeting3384703275"
+      },
+      "Type": "default",
+      "Active": true
+    }
+  ],
+  "ImageGallery": [
+    {
+      "ImageUrl": "https://tourism.images.opendatahub.com/api/Image/GetImage?imageurl=91f376da-b09e-49cc-a47d-daf2a290076d.jpg"
+    }
+  ],
+  "OrganizerInfos": {
+    "en": {
+      "CompanyName": "NOI"
+    }
+  },
+  "VenueIds": [
+    "urn:venue:noi:6b3f0a14-3c5b-5d09-81f3-3ebe5b7885ea"
+  ]
+}]}

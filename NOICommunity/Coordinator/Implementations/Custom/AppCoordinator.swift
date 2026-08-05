@@ -276,20 +276,6 @@ private extension AppCoordinator {
 		}
 	}
 	
-	func locateEvent(
-		_ event: Event
-	) {
-		let mapViewController = MapWebViewController()
-		mapViewController.url = event.mapURL ?? .map
-		mapViewController.navigationItem.title = event.mapURL != nil ?
-		event.venue:
-			.localized("title_generic_noi_techpark_map")
-		topViewController.navigationController?.pushViewController(
-			mapViewController,
-			animated: true
-		)
-	}
-	
 	func signupEvent(
 		_ event: Event
 	) {
@@ -311,9 +297,6 @@ private extension AppCoordinator {
 			
 			pageVC.addToCalendarActionHandler = { [weak self] in
 				self?.addEventToCalendar($0)
-			}
-			pageVC.locateActionHandler = { [weak self] in
-				self?.locateEvent($0)
 			}
 			pageVC.signupActionHandler = { [weak self] in
 				self?.signupEvent($0)

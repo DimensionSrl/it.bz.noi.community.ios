@@ -3,29 +3,26 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 //
-//  Endpoint+EventShort.swift
+//  Endpoint+Event.swift
 //  NOICommunityLib
 //
-//  Created by Matteo Matassoni on 03/12/24.
+//  Created by Matteo Matassoni on 03/08/26.
 //
 
 import Foundation
 import Core
 
-// MARK: - Endpoint+EventShort
+// MARK: - Endpoint+Event
 
 extension Endpoint {
 
-	static func eventShortList(
+	static func eventList(
 		pageNumber: Int? = nil,
 		pageSize: Int? = nil,
-		startDate: Date? = nil,
+		beginDate: Date? = nil,
 		endDate: Date? = nil,
-		source: Source? = nil,
-		eventLocation: EventLocation? = nil,
 		publishedon: String? = nil,
 		eventIds: [String]? = nil,
-		webAddress: String? = nil,
 		sortOrder: Order? = nil,
 		seed: Int? = nil,
 		language: String? = nil,
@@ -44,7 +41,7 @@ extension Endpoint {
 		dateFormatter.locale = Locale(identifier: "en_US_POSIX")
 		dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
 
-		return Self(path: "/v1/EventShort") {
+		return Self(path: "/v1/Event") {
 			if let pageNumber {
 				URLQueryItem(
 					name: "pagenumber",
@@ -59,10 +56,10 @@ extension Endpoint {
 				)
 			}
 
-			if let startDate {
+			if let beginDate {
 				URLQueryItem(
-					name: "startdate",
-					value: dateFormatter.string(from: startDate)
+					name: "begindate",
+					value: dateFormatter.string(from: beginDate)
 				)
 			}
 
@@ -71,18 +68,6 @@ extension Endpoint {
 					name: "enddate",
 					value: dateFormatter.string(from: endDate)
 				)
-			}
-
-			if let source {
-				URLQueryItem(
-					name: "source",
-					value: source.rawValue)
-			}
-
-			if let eventLocation {
-				URLQueryItem(
-					name: "eventlocation",
-					value: eventLocation.rawValue)
 			}
 
 			if let publishedon {
@@ -98,16 +83,9 @@ extension Endpoint {
 				)
 			}
 
-			if let webAddress {
-				URLQueryItem(
-					name: "webaddress",
-					value: webAddress
-				)
-			}
-
 			if let sortOrder {
 				URLQueryItem(
-					name: "sortorder",
+					name: "sort",
 					value: sortOrder.rawValue
 				)
 			}
@@ -183,34 +161,20 @@ extension Endpoint {
 		}
 	}
 
-	static func roomMapping(
-		language: String? = nil
-	) -> Endpoint {
-		Self(path: "/v1/EventShort/RoomMapping") {
-			if let language {
-				URLQueryItem(
-					name: "language",
-					value: language
-				)
-			}
-		}
-	}
-
-	static func eventShort(
+	static func event(
 		id: String,
 		language: String? = nil,
 		optimizeDates: Bool? = nil,
 		fields: [String]? = nil,
 		removeNullValues: Bool? = nil
 	) -> Endpoint {
-		Self(path: "/v1/EventShort/\(id)") {
+		Self(path: "/v1/Event/\(id)") {
 			if let language {
 				URLQueryItem(
 					name: "language",
 					value: language
 				)
 			}
-
 
 			if let fields {
 				URLQueryItem(
@@ -219,14 +183,12 @@ extension Endpoint {
 				)
 			}
 
-
 			if let optimizeDates {
 				URLQueryItem(
 					name: "optimizedates",
 					value: String(optimizeDates)
 				)
 			}
-
 
 			if let removeNullValues {
 				URLQueryItem(

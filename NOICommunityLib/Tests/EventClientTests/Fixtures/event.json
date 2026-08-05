@@ -1,0 +1,44 @@
+{
+  "Id": "urn:event:noi:0cc8a97a-fce1-41e3-b03f-96a4bfbccf03",
+  "DateBegin": "2024-12-10T09:00:00",
+  "DateEnd": "2024-12-10T10:10:00",
+  "Detail": {
+    "de": {
+      "Title": "Digital Community Meeting: Neue Labs, spannende Projekte: Updates aus der Digital Community",
+      "BaseText": "Unser letztes Digital Community Meeting in diesem Jahr steht bevor – und wir haben gleich vier inspirierende Insights in aktuelle Projekte für dich dabei.\n\nKünstliche Intelligenz trifft Realität: Diego Calvanese stellt das AI Lab der Freien Universität Bozen vor. Die Forschung im AI Lab konzentriert sich auf die neuesten Entwicklungen in der Künstlichen Intelligenz und arbeitet eng mit der Industrie zusammen.\n\nGeodaten für mehr Sicherheit in den Bergen: Filipp Frei und Roberto Cavaliere geben Einblicke in das Projekt DigiWay: Durch die Vereinheitlichung und Validierung von Geodaten der Euregio sollen die öffentlich zugänglichen Informationen über die Sicherheit in den Bergen verbessert werden.\n\nSchutz vor Cyberbedrohungen: Barbara Russo erzählt vom neuen Cyber Security Lab der Freien Universität Bozen, das in einer geschützten, modularen und flexiblen Umgebung Cybersicherheits-Services für öffentliche und private Organisationen anbietet.\n\nUmweltmanagement der Zukunft: Roberto Monsorno von Eurac Research spricht über das Projekt EnvironTWIN – ein digitaler Zwilling für die Entwicklung von Umweltmanagement-Szenarien im alpinen Raum unter Berücksichtigung von Entwicklungsstand, Risiken und möglichen Lösungen.\n\nProgramm:\n9:00 Intro - Patrick Ohnewein, NOI \n9:10 AI Lab - Diego Calvanese, unibz\n9:25 Geodaten für Sicherheit am Berg - Filipp Frei & Roberto Cavaliere, NOI\n9:40 Cyber Security LAB - Barbara Russo, unibz\n9:55 Projekt EnvinronTWIN: digitale Zwillinge für ein vorausschauendes Umweltmanagement in alpinen Szenarien - Roberto Monsorno, Eurac Research\n10:10 Closing\n\nDie Teilnahme ist kostenlos, eine Anmeldung ist erforderlich. \nDu möchtest mehr erfahren? Schreib einfach an digital@noi.bz.it.\n",
+      "Language": "de"
+    },
+    "en": {
+      "Title": "Digital Community Meeting: New labs, exciting projects: updates from the Digital Community",
+      "BaseText": "Our last Digital Community Meeting of the year is around the corner – and we have four inspiring insights into current projects for you. \n\nArtificial Intelligence meets reality: Diego Calvanese introduces the AI Lab at the Free University of Bozen-Bolzano, which focuses on the latest developments in artificial intelligence and works closely with industry. \n\nGeodata for greater safety in the mountains: Filipp Frei and Roberto Cavaliere provide an insight into the DigiWay project, which aims to standardise and validate geodata in the Euregio in order to improve publicly available information on safety in the mountains. \n\nProtection against cyber threats: Barbara Russo talks about the new Cyber Security Lab at the Free University of Bozen-Bolzano, which offers cyber security services to public and private organisations in a protected, modular and adaptable environment. \n\nEnvironmental management of the future: Roberto Monsorno of Eurac Research talks about the EnvironTWIN project - a digital twin for developing environmental management scenarios in Alpine regions, considering their current state, risks and possible solutions.        \n\nProgramme:\n9:00 Intro - Patrick Ohnewein, NOI \n9:10 AI Lab - Diego Calvanese, unibz\n9:25 Geodata for safety on the mountain- Filipp Frei & Roberto Cavaliere, NOI\n9:40 Cyber Security LAB - Barbara Russo, unibz\n9:55 Project EnvinronTWIN: Digital Twins for Predictive Environmental Management in Alpine Scenarios   - Roberto Monsorno, Eurac Research\n10:10 Closing\n\nAttendance is free, registration is mandatory. \nWant to know more? Write to us: digital@noi.bz.it \n",
+      "Language": "en"
+    },
+    "it": {
+      "Title": "Digital Community Meeting: Nuovi laboratori, progetti avvincenti: gli ultimi update dalla Digital Community",
+      "BaseText": "L’ultimo Digital Community Meeting di quest’anno si avvicina. Per l’occasione abbiamo preparato quattro interessanti interventi per raccontarti in breve alcuni dei nuovi progetti in corso.\n\nL’intelligenza artificiale incontra la realtà: Diego Calvanese presenta l’AI Lab della Libera Università di Bolzano. La ricerca dell’AI Lab si concentra sugli ultimi sviluppi dell’intelligenza artificiale e lavora a stretto contatto con l’industria.\n\nGeodati per una maggiore sicurezza in montagna: Filipp Frei e Roberto Cavaliere ci raccontano da vicino il progetto DigiWay. L’obiettivo principale di DigiWay è quello di migliorare le informazioni sulla sicurezza in montagna a disposizione del pubblico attraverso la standardizzazione e la convalida dei geodati nell’Euregio.\n\nProtezione dalle minacce informatiche: Barbara Russo ci parla del nuovo Cyber Security Lab della Libera Università di Bolzano. Questo laboratorio offre servizi di sicurezza informatica per enti pubblici e organizzazioni private in un ambiente protetto, modulare e versatile.\n\nGestione ambientale del futuro: Roberto Monsorno di Eurac Research ci spiega l’obiettivo del progetto EnvironTWIN, un gemello digitale realizzato per sviluppare scenari di gestione ambientale nella regione alpina, tenendo conto dello stato evolutivo, dei rischi e delle possibili soluzioni.\n\nProgramma:\n9:00 Intro - Patrick Ohnewein, NOI \n9:10 AI Lab - Diego Calvanese, unibz\n9:25 Geodati per la sicurezza in montagna - Filipp Frei & Roberto Cavaliere, NOI \n9:40 Cyber Security LAB - Barbara Russo, unibz\n9:55 Progetto EnvinronTWIN: gemelli digitali per la gestione ambientale previsionale negli scenari alpini - Roberto Monsorno, Eurac Research\n10:10 Closing\n\nLa partecipazione è gratuita, la registrazione è obbligatoria. \nPer ulteriori informazioni puoi rivolgerti a digital@noi.bz.it \n",
+      "Language": "it"
+    }
+  },
+  "EventUrls": [
+    {
+      "Url": {
+        "en": "https://registration.noi.bz.it/event/registration?id=Digital_Community_Meeting3580533219"
+      },
+      "Type": "default",
+      "Active": true
+    }
+  ],
+  "ImageGallery": [
+    {
+      "ImageUrl": "https://tourism.images.opendatahub.com/api/Image/GetImage?imageurl=f607966d-561e-42d3-864d-6b8840844626.jpg"
+    }
+  ],
+  "OrganizerInfos": {
+    "en": {
+      "CompanyName": "NOI"
+    }
+  },
+  "VenueIds": [
+    "urn:venue:noi:6b3f0a14-3c5b-5d09-81f3-3ebe5b7885ea"
+  ]
+}
