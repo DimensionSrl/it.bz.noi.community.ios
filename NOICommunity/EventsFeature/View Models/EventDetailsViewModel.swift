@@ -87,6 +87,7 @@ private extension EventDetailsViewModel {
 					"DateBegin",
 					"DateEnd",
 					"Detail",
+					"EventDate",
 					"EventUrls",
 					"Id",
 					"ImageGallery",

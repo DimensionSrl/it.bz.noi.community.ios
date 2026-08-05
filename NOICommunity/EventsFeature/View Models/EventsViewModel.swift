@@ -97,6 +97,7 @@ private extension EventsViewModel {
 					"DateBegin",
 					"DateEnd",
 					"Detail",
+					"EventDate",
 					"EventUrls",
 					"Id",
 					"ImageGallery",
@@ -234,11 +235,25 @@ extension Event {
             imageURL = urlComponents.url!
         }
 
-        let venue = remoteEvent.venueIds?
+        let matchingVenue = remoteEvent.venueIds?
             .lazy
             .compactMap { venues[$0] }
             .first
-            .flatMap { localizedValueOrFirst(from: $0.localizedTitles) }
+
+        // VenueIds only identifies the building (eg. "NOI Techpark"); the
+        // specific room (eg. "NOISE", "Seminar 3") lives under
+        // EventDate.VenueRoomDetailsIds and must be resolved against the
+        // venue's own RoomDetails.
+        let matchingRoom = remoteEvent.eventDate?
+            .first?
+            .venueRoomDetailsIds?
+            .first
+            .flatMap { roomId in matchingVenue?.roomDetails?.first { $0.id == roomId } }
+
+        // Fall back to the building name if there's no room-specific match.
+        let roomName = matchingRoom?.shortname.flatMap { $0.isEmpty ? nil : $0 }
+        let venue = roomName
+            ?? matchingVenue.flatMap { localizedValueOrFirst(from: $0.localizedTitles) }
 
         let signupURL = remoteEvent.eventUrls?
             .first { $0.type == "default" }?

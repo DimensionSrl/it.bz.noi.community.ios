@@ -63,16 +63,25 @@ final class EventClientDecodingTests: XCTestCase {
 		let data = try fixtureData("event")
 		let event = try jsonDecoder.decode(RemoteEvent.self, from: data)
 
-		XCTAssertEqual(event.id, "urn:event:noi:0cc8a97a-fce1-41e3-b03f-96a4bfbccf03")
-		XCTAssertEqual(event.detail?["en"]?.title, "Digital Community Meeting: New labs, exciting projects: updates from the Digital Community")
+		XCTAssertEqual(event.id, "urn:event:noi:29f3ca8d-5ec7-462f-ab9d-7b00abefa738")
+		XCTAssertEqual(event.detail?["en"]?.title, "Scratch Stories with AI | 6-8 years")
 		XCTAssertEqual(event.organizerInfos?["en"]?.companyName, "NOI")
 		XCTAssertEqual(event.venueIds, ["urn:venue:noi:6b3f0a14-3c5b-5d09-81f3-3ebe5b7885ea"])
 		XCTAssertEqual(
 			event.eventUrls?.first { $0.type == "default" }?.url?["en"],
-			"https://registration.noi.bz.it/event/registration?id=Digital_Community_Meeting3580533219"
+			"https://registration.noi.bz.it/event/?id=MiniNOI_Science_Club_01062024_6-8_anni_930-12003585025325"
 		)
 		let imageUrl = event.imageGallery?.compactMap { $0 }.first?.imageUrl
-		XCTAssertEqual(imageUrl, "https://tourism.images.opendatahub.com/api/Image/GetImage?imageurl=f607966d-561e-42d3-864d-6b8840844626.jpg")
+		XCTAssertEqual(imageUrl, "https://tourism.images.opendatahub.com/api/Image/GetImage?imageurl=b0c9006c-27ce-407f-93f4-d456c3bbf778.jpg")
+
+		// The specific room an event takes place in only lives under
+		// EventDate.VenueRoomDetailsIds, not under the top-level VenueIds
+		// (which only identifies the building) — this is what a Venue lookup
+		// must resolve against RoomDetails to show a room name like "NOISE".
+		XCTAssertEqual(
+			event.eventDate?.first?.venueRoomDetailsIds,
+			["urn:venueroomid:noi:5041c0f8-880d-5fb0-ac8d-62d4792d5c2f"]
+		)
 	}
 
 	func testDecodeEventListResponse() throws {
@@ -91,6 +100,11 @@ final class EventClientDecodingTests: XCTestCase {
 		let venue = try XCTUnwrap(response.items.first)
 		XCTAssertEqual(venue.id, "urn:venue:noi:6b3f0a14-3c5b-5d09-81f3-3ebe5b7885ea")
 		XCTAssertEqual(venue.detail?["en"]?.title, "NOI Techpark")
+
+		let room = try XCTUnwrap(
+			venue.roomDetails?.first { $0.id == "urn:venueroomid:noi:5041c0f8-880d-5fb0-ac8d-62d4792d5c2f" }
+		)
+		XCTAssertEqual(room.shortname, "NOISE")
 	}
 
 }

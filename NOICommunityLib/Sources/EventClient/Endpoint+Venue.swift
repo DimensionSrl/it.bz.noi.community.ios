@@ -35,7 +35,10 @@ extension Endpoint {
 
 			URLQueryItem(
 				name: "fields",
-				value: "Id,Detail"
+				// Field-path wildcards (eg. "RoomDetails.[*].Shortname") are not
+				// honored by this endpoint, verified live — request the whole
+				// RoomDetails object instead and decode only what's needed.
+				value: "Id,Detail,RoomDetails"
 			)
 
 			URLQueryItem(

@@ -16,12 +16,20 @@ import Foundation
 public struct Venue: Decodable, Equatable {
 	public let id: String?
 	public let detail: [String:VenueDetail]?
+	public let roomDetails: [RoomDetail]?
 }
 
 // MARK: - VenueDetail
 
 public struct VenueDetail: Decodable, Equatable {
 	public let title: String?
+}
+
+// MARK: - RoomDetail
+
+public struct RoomDetail: Decodable, Equatable {
+	public let id: String?
+	public let shortname: String?
 }
 
 // MARK: - VenueListResponse

@@ -25,7 +25,17 @@ public struct RemoteEvent: Decodable, Equatable {
 	public let organizerInfos: [String:OrganizerInfo]?
 	public let eventUrls: [EventUrl]?
 	public let venueIds: [String]?
+	public let eventDate: [EventDate]?
 	public let publishedOn: [String?]?
+}
+
+// MARK: - EventDate
+
+public struct EventDate: Decodable, Equatable {
+	// The specific room(s) this occurrence takes place in, as ids into the
+	// venue's RoomDetails (see Venue.swift) — not to be confused with
+	// VenueIds, which only identifies the building.
+	public let venueRoomDetailsIds: [String]?
 }
 
 // MARK: - EventDetail
