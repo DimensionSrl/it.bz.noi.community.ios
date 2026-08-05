@@ -49,6 +49,9 @@
 /* Contact details page: find button text */
 "btn_find" = "Maps";
 
+/* Event Details: Find on Maps button label */
+"btn_find_on_maps" = "Lageplan";
+
 /* Onboarding wizard: login button label */
 "btn_login" = "Anmelden";
 
@@ -89,8 +92,7 @@
 "delete_profile_compose_subject" = "Anfrage zum Löschen des Profils";
 
 /* App doesn't have calendar access or calendar access is restricted */
-"error_calendar_access_not_granted_or_restricted" = "Zugriff auf Kalender nicht möglich.
-\nÜberprüfe die Zugriffseinstellungen der App.";
+"error_calendar_access_not_granted_or_restricted" = "Zugriff auf Kalender nicht möglich.\nÜberprüfe die Zugriffseinstellungen der App.";
 
 /* Error while adding an event to the calendar  */
 "error_calendar_event_not_added" = "Kalendereintrag nicht möglich";
@@ -266,6 +268,9 @@ Tab Orientate: button label */
 
 /* Filters's title on action bar */
 "title_filters" = "Filter";
+
+/* When map opened from FIND ON MAPS is generic (no specific rooms selected) */
+"title_generic_noi_techpark_map" = "NOI Techpark Maps";
 
 /* Tab Meet: title on action bar */
 "title_meet" = "Meet up!";

@@ -30,6 +30,23 @@ public struct VenueDetail: Decodable, Equatable {
 public struct RoomDetail: Decodable, Equatable {
 	public let id: String?
 	public let shortname: String?
+	public let mapping: RoomMapping?
+}
+
+// MARK: - RoomMapping
+
+public struct RoomMapping: Decodable, Equatable {
+	// Not yet populated for any room, verified live against the whole NOI
+	// Techpark venue — the equivalent data still exists in the deprecated
+	// /v1/EventShort/RoomMapping endpoint but hasn't been migrated here yet.
+	// Wired up regardless so it starts working the moment it's populated.
+	public let maps: RoomMappingMaps?
+}
+
+// MARK: - RoomMappingMaps
+
+public struct RoomMappingMaps: Decodable, Equatable {
+	public let roommapping: String?
 }
 
 // MARK: - VenueListResponse

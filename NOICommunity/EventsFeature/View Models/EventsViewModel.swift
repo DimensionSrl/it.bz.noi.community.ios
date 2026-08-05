@@ -255,6 +255,13 @@ extension Event {
         let venue = roomName
             ?? matchingVenue.flatMap { localizedValueOrFirst(from: $0.localizedTitles) }
 
+        // Not populated for any room yet (verified live) — starts resolving
+        // to a real per-room map link automatically once the backend
+        // migrates this data from the deprecated RoomMapping endpoint.
+        let mapURL = matchingRoom?.mapping?.maps?.roommapping
+            .flatMap { $0.isEmpty ? nil : $0 }
+            .flatMap(URL.init(string:))
+
         let signupURL = remoteEvent.eventUrls?
             .first { $0.type == "default" }?
             .url
@@ -270,6 +277,7 @@ extension Event {
             imageURL: imageURL,
             description: description,
             organizer: localizedValueOrFirst(from: remoteEvent.localizedOrganizerCompanyNames),
+            mapURL: mapURL,
             signupURL: signupURL
         )
     }

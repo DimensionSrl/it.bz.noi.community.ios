@@ -105,6 +105,16 @@ final class EventClientDecodingTests: XCTestCase {
 			venue.roomDetails?.first { $0.id == "urn:venueroomid:noi:5041c0f8-880d-5fb0-ac8d-62d4792d5c2f" }
 		)
 		XCTAssertEqual(room.shortname, "NOISE")
+		// Not populated for this room in the live API today — must decode
+		// to nil rather than throw, so the "locate on map" button degrades
+		// gracefully until the backend migrates this data.
+		XCTAssertNil(room.mapping?.maps?.roommapping)
+
+		let roomWithMapping = try XCTUnwrap(
+			venue.roomDetails?.first { $0.id == "urn:venueroomid:noi:79179fbf-fef5-536c-b63f-eb7bf130522f" }
+		)
+		XCTAssertEqual(roomWithMapping.shortname, "Seminar 3")
+		XCTAssertEqual(roomWithMapping.mapping?.maps?.roommapping, "https://maps.noi.bz.it/en/?shared=A1--1-17")
 	}
 
 }

@@ -20,5 +20,6 @@ struct Event: Hashable, Identifiable {
     let imageURL: URL?
     let description: String?
     let organizer: String?
+    let mapURL: URL?
     let signupURL: URL?
 }

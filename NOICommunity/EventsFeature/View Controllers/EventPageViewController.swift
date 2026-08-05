@@ -25,6 +25,14 @@ final class EventPageViewController: BasePageViewController<EventDetailsViewMode
 			.first
 	}
 
+	var locateActionHandler: ((Event) -> Void)? {
+		didSet {
+			eventDetailsViewController?.locateActionHandler = { [weak self] in
+				self?.locateActionHandler?($0)
+			}
+		}
+	}
+
 	var addToCalendarActionHandler: ((Event) -> Void)? {
 		didSet {
 			eventDetailsViewController?.addToCalendarActionHandler = { [weak self] in
@@ -93,6 +101,9 @@ private extension EventPageViewController {
 
 	func makeResultContent(for event: Event) -> EventDetailsViewController {
 		let result = EventDetailsViewController(for: event)
+		result.locateActionHandler = { [weak self] in
+			self?.locateActionHandler?($0)
+		}
 		result.addToCalendarActionHandler = { [weak self] in
 			self?.addToCalendarActionHandler?($0)
 		}

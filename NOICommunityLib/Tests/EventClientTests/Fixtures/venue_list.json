@@ -17,11 +17,26 @@
       "RoomDetails": [
         {
           "Id": "urn:venueroomid:noi:5041c0f8-880d-5fb0-ac8d-62d4792d5c2f",
-          "Shortname": "NOISE"
+          "Shortname": "NOISE",
+          "Mapping": {
+            "momentus": {
+              "id": "room-33-A",
+              "name": "NOI - NOISE"
+            }
+          }
         },
         {
           "Id": "urn:venueroomid:noi:79179fbf-fef5-536c-b63f-eb7bf130522f",
-          "Shortname": "Seminar 3"
+          "Shortname": "Seminar 3",
+          "Mapping": {
+            "momentus": {
+              "id": "room-36-A",
+              "name": "NOI - Seminar 3"
+            },
+            "maps": {
+              "roommapping": "https://maps.noi.bz.it/en/?shared=A1--1-17"
+            }
+          }
         }
       ]
     }

@@ -16,6 +16,8 @@ class EventDetailsViewController: UIViewController {
 
     let event: Event
 
+    var locateActionHandler: ((Event) -> Void)?
+
     var addToCalendarActionHandler: ((Event) -> Void)?
 
     var signupActionHandler: ((Event) -> Void)?
@@ -71,6 +73,14 @@ class EventDetailsViewController: UIViewController {
     }
     
     @IBOutlet private var actionsContainersView: FooterView!
+
+    @IBOutlet private var locateEventButton: UIButton! {
+        didSet {
+            locateEventButton
+                .configureAsSecondaryActionButton()
+                .withTitle(.localized("btn_find_on_maps"))
+        }
+    }
 
     @IBOutlet private var addToCalendarButton: UIButton! {
         didSet {
@@ -160,6 +170,10 @@ private extension EventDetailsViewController {
 		contentStackView.insertArrangedSubview(_cardView, at: 0)
     }
     
+    @IBAction func findOnMapsAction(sender: Any?) {
+        locateActionHandler?(event)
+    }
+
     @IBAction func addToCalendarAction(sender: Any?) {
         addToCalendarActionHandler?(event)
     }
