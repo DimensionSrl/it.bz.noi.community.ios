@@ -198,14 +198,21 @@ private extension Venue {
 
 // MARK: - Event Additions
 
+/// Prefers the device's preferred language, but falls back to whatever
+/// language the API did return rather than nil — the API doesn't always
+/// localize every field (eg. organizer names) into every language.
+private func localizedValueOrFirst(from dict: [String:String]) -> String? {
+    localizedValue(from: dict) ?? dict.values.first
+}
+
 extension Event {
 
     init(
         from remoteEvent: RemoteEvent,
         venues: [String:Venue]
     ) {
-        let title = localizedValue(from: remoteEvent.localizedTitles)
-        let description = localizedValue(from: remoteEvent.localizedTexts)
+        let title = localizedValueOrFirst(from: remoteEvent.localizedTitles)
+        let description = localizedValueOrFirst(from: remoteEvent.localizedTexts)
 
         var imageURL = (remoteEvent.imageGallery ?? [])
             .lazy
@@ -231,12 +238,12 @@ extension Event {
             .lazy
             .compactMap { venues[$0] }
             .first
-            .flatMap { localizedValue(from: $0.localizedTitles) }
+            .flatMap { localizedValueOrFirst(from: $0.localizedTitles) }
 
         let signupURL = remoteEvent.eventUrls?
             .first { $0.type == "default" }?
             .url
-            .flatMap { localizedValue(from: $0) }
+            .flatMap { localizedValueOrFirst(from: $0) }
             .flatMap(URL.init(string:))
 
         self.init(
@@ -247,7 +254,7 @@ extension Event {
             venue: venue,
             imageURL: imageURL,
             description: description,
-            organizer: localizedValue(from: remoteEvent.localizedOrganizerCompanyNames),
+            organizer: localizedValueOrFirst(from: remoteEvent.localizedOrganizerCompanyNames),
             signupURL: signupURL
         )
     }
