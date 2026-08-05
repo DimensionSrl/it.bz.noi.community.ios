@@ -104,6 +104,7 @@ private extension EventsViewModel {
 					"VenueIds"
 				],
 				rawFilter: activeFilters.toQuery(),
+				rawSort: "DateBegin",
 				removeNullValues: true,
 				optimizeDates: true
 			)
