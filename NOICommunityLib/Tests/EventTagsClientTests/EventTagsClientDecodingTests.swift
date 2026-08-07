@@ -33,10 +33,10 @@ final class EventTagsClientDecodingTests: XCTestCase {
 
 		let digital = try XCTUnwrap(response.items.first { $0.id == "digital" })
 		XCTAssertEqual(digital.tagName["en"], "Digital")
-		// "digital" belongs to both categories at once, confirmed live against
-		// the real /v1/Tag endpoint, so it must be selectable from either
-		// filter section.
-		XCTAssertTrue(digital.isCustomTagging)
+		// "digital" is tagged with both categories, confirmed live against the
+		// real /v1/Tag endpoint ("technologyfields" listed first) — only the
+		// first type is used, so it maps to exactly one filter section.
+		XCTAssertFalse(digital.isCustomTagging)
 		XCTAssertTrue(digital.isTechnologyFields)
 
 		let artsculture = try XCTUnwrap(response.items.first { $0.id == "artsculture" })

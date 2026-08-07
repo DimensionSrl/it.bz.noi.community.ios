@@ -47,12 +47,15 @@ public struct Tag: Codable, Hashable {
 	public let tagName: LocalizedMap<String>
 	public let types: [String]
 
+	// A tag can be tagged with more than one type (eg. "digital" has both
+	// "technologyfields" and "customtagging"); only the first is used, so a
+	// tag always maps to exactly one filter category.
 	public var isCustomTagging: Bool {
-		types.contains(Self.customTagging)
+		types.first == Self.customTagging
 	}
 
 	public var isTechnologyFields: Bool {
-		types.contains(Self.technologyFields)
+		types.first == Self.technologyFields
 	}
 
 	public init(from decoder: any Decoder) throws {
