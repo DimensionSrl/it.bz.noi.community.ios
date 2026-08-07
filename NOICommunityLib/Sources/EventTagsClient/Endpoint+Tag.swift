@@ -16,14 +16,14 @@ extension Endpoint {
 
 	static func eventTagList() -> Endpoint {
 		Self(path: "/v1/Tag") {
+			// Per the official swagger spec, "types" is a single
+			// comma-separated string, not a repeatable query param — passing
+			// it twice happens to work on production (minus 3 technology
+			// fields tags silently dropped) but not on the testing
+			// environment (only the first occurrence is honored there).
 			URLQueryItem(
 				name: "types",
-				value: Tag.customTagging
-			)
-
-			URLQueryItem(
-				name: "types",
-				value: Tag.technologyFields
+				value: "\(Tag.customTagging),\(Tag.technologyFields)"
 			)
 
 			URLQueryItem(
