@@ -30,7 +30,8 @@ public protocol EventClient {
 		rawFilter: String?,
 		rawSort: String?,
 		removeNullValues: Bool?,
-		optimizeDates: Bool?
+		optimizeDates: Bool?,
+		denormalize: Bool?
 	) async throws -> EventListResponse
 
 	func getVenues(
@@ -67,7 +68,8 @@ public extension EventClient {
 		rawFilter: String? = nil,
 		rawSort: String? = nil,
 		removeNullValues: Bool? = nil,
-		optimizeDates: Bool? = nil
+		optimizeDates: Bool? = nil,
+		denormalize: Bool? = nil
 	) async throws -> EventListResponse {
 		try await getEventList(
 			pageNumber: pageNumber,
@@ -86,7 +88,8 @@ public extension EventClient {
 			rawFilter: rawFilter,
 			rawSort: rawSort,
 			removeNullValues: removeNullValues,
-			optimizeDates: optimizeDates
+			optimizeDates: optimizeDates,
+			denormalize: denormalize
 		)
 	}
 

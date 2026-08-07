@@ -107,7 +107,14 @@ private extension EventsViewModel {
 				rawFilter: activeFilters.toQuery(),
 				rawSort: "DateBegin",
 				removeNullValues: true,
-				optimizeDates: true
+				optimizeDates: true,
+				// An event can have several occurrences (different dates
+				// and/or rooms). Denormalizing turns each occurrence into
+				// its own list item — with DateBegin/DateEnd and EventDate
+				// rewritten to that specific occurrence — so the room shown
+				// always matches the date shown, at the cost of the same
+				// underlying event potentially appearing more than once.
+				denormalize: true
 			)
 
 			let venues = try await fetchVenues(

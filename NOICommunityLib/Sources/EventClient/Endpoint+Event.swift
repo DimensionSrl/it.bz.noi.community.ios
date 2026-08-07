@@ -33,7 +33,8 @@ extension Endpoint {
 		rawFilter: String? = nil,
 		rawSort: String? = nil,
 		removeNullValues: Bool? = nil,
-		optimizeDates: Bool? = nil
+		optimizeDates: Bool? = nil,
+		denormalize: Bool? = nil
 	) -> Endpoint {
 		let dateFormatter = DateFormatter()
 		dateFormatter.calendar = Calendar(identifier: .iso8601)
@@ -156,6 +157,13 @@ extension Endpoint {
 				URLQueryItem(
 					name: "optimizedates",
 					value: String(optimizeDates)
+				)
+			}
+
+			if let denormalize {
+				URLQueryItem(
+					name: "denormalize",
+					value: String(denormalize)
 				)
 			}
 		}

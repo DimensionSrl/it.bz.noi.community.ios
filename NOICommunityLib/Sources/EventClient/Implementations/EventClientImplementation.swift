@@ -84,7 +84,8 @@ public final class EventClientImplementation: EventClient {
 		rawFilter: String?,
 		rawSort: String?,
 		removeNullValues: Bool?,
-		optimizeDates: Bool?
+		optimizeDates: Bool?,
+		denormalize: Bool?
 	) async throws -> EventListResponse {
 		let request = Endpoint
 			.eventList(
@@ -104,7 +105,8 @@ public final class EventClientImplementation: EventClient {
 				rawFilter: rawFilter,
 				rawSort: rawSort,
 				removeNullValues: removeNullValues,
-				optimizeDates: optimizeDates
+				optimizeDates: optimizeDates,
+				denormalize: denormalize
 			)
 			.makeRequest(withBaseURL: baseURL)
 
